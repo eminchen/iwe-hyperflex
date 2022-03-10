@@ -52,6 +52,8 @@ module "hx" {
     wwxn_prefix                   = var.cluster.wwxn_prefix
 
     ### IWE HYPERVISOR ###
+    storage_client_vlan_name      = var.cluster.storage_client_vlan_name
+    storage_client_vlan_id        = var.cluster.storage_client_vlan_id
     storage_client_ip_address     = var.cluster.storage_client_ip_address
     storage_client_netmask        = var.cluster.storage_client_netmask
     cluster_internal_subnet = {

@@ -43,6 +43,8 @@ variable "cluster" {
     storage_type                  = optional(string)
     wwxn_prefix                   = optional(string)
     ## IWE ONLY ##
+    storage_client_vlan_name      = optional(string)
+    storage_client_vlan_id        = optional(number)
     storage_client_ip_address     = optional(string)
     storage_client_netmask        = optional(string)
     cluster_internal_subnet       = optional(object({
@@ -52,7 +54,6 @@ variable "cluster" {
       }))
     })
 }
-
 variable "local_cred_policy" {
   type = object({
     use_existing                = bool
@@ -118,6 +119,7 @@ variable "proxy_setting_policy" {
     name         = string
 
   })
+
 }
 
 variable "ext_fc_storage_policy" {
@@ -138,9 +140,12 @@ variable "ext_iscsi_storage_policy" {
 
 variable "software_version_policy" {
   type = object({
-    use_existing = bool
-    name         = string
-
+    use_existing            = bool
+    name                    = string
+    description             = string
+    server_firmware_version = string
+    hypervisor_version      = string
+    hxdp_version            = string
   })
 }
 

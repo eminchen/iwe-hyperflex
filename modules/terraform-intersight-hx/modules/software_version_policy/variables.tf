@@ -1,0 +1,25 @@
+variable "name" {
+  type        = string
+  description = "Policy name."
+}
+
+variable "description" {
+  type        = string
+  description = "Policy description."
+  default     = ""
+}
+
+variable "server_firmware_version" {
+  type        = string
+  description = "Desired server firmware version to apply on the HyperFlex Cluster."
+}
+
+variable "hypervisor_version" {
+  type        = string
+  description = "Desired hypervisor version to apply for all the nodes on the HyperFlex cluster."
+}
+
+variable "hxdp_version" {
+  type        = string
+  description = "Desired HyperFlex Data Platform software version to apply on the HyperFlex cluster."
+}

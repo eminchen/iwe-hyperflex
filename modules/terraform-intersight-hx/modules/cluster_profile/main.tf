@@ -6,7 +6,7 @@ data "intersight_organization_organization" "this" {
 # Creating cluster profile
 resource "intersight_hyperflex_cluster_profile" "this" {
 
-  action              = var.action
+  action                        = var.action
 
   data_ip_address               = var.data_ip_address
   description                   = var.description
@@ -38,8 +38,11 @@ resource "intersight_hyperflex_cluster_profile" "this" {
   src_template??
   */
 
-  auto_support {
-    moid = var.auto_support_policy_moid
+  dynamic "auto_support" {
+    for_each = var.auto_support_policy_moid == null ? [] : [var.auto_support_policy_moid]
+    content {
+      moid = auto_support.value
+    }
   }
 
   ## IWE Only ##
@@ -61,15 +64,22 @@ resource "intersight_hyperflex_cluster_profile" "this" {
     moid = var.cluster_storage_policy_moid
   }
 
+  dynamic "cluster_storage" {
+    for_each = var.cluster_storage_policy_moid == null ? [] : [var.cluster_storage_policy_moid]
+    content {
+      moid = cluster_storage.value
+    }
+  }
+
   dynamic "ext_fc_storage" {
-    for_each = var.ext_fc_storage_policy_moid == "" ? [] : [var.ext_fc_storage_policy_moid]
+    for_each = var.ext_fc_storage_policy_moid == null ? [] : [var.ext_fc_storage_policy_moid]
     content {
       moid = ext_fc_storage.value
     }
   }
 
   dynamic "ext_iscsi_storage" {
-    for_each = var.ext_iscsi_storage_policy_moid == "" ? [] : [var.ext_iscsi_storage_policy_moid]
+    for_each = var.ext_iscsi_storage_policy_moid == null ? [] : [var.ext_iscsi_storage_policy_moid]
     content {
       moid = ext_iscsi_storage.value
     }
@@ -88,8 +98,11 @@ resource "intersight_hyperflex_cluster_profile" "this" {
     moid        = data.intersight_organization_organization.this.results.0.moid
   }
 
-  proxy_setting {
-    moid = var.proxy_setting_policy_moid
+  dynamic "proxy_setting" {
+    for_each = var.proxy_setting_policy_moid == null ? [] : [var.proxy_setting_policy_moid]
+    content {
+      moid = proxy_setting_policy_moid.value
+    }
   }
 
   software_version {
@@ -98,7 +111,7 @@ resource "intersight_hyperflex_cluster_profile" "this" {
 
   ## IWE Only ##
   dynamic "storage_client_vlan" {
-    for_each = var.hypervisor_type == "IWE" ? [var.cluster_internal_subnet] : []
+    for_each = var.hypervisor_type == "IWE" ? [var.storage_client_vlan] : []
     content {
       name     = storage_client_vlan.value.name
       vlan_id  = storage_client_vlan.value.vlan_id
@@ -124,14 +137,14 @@ resource "intersight_hyperflex_cluster_profile" "this" {
   }
 
   dynamic "vcenter_config" {
-    for_each = var.vcenter_config_policy_moid == "" ? [] : [var.vcenter_config_policy_moid]
+    for_each = var.vcenter_config_policy_moid == null ? [] : [var.vcenter_config_policy_moid]
     content {
       moid = vcenter_config.value
     }
   }
 
   dynamic "ucsm_config" {
-    for_each = var.ucsm_config_policy_moid == "" ? [] : [var.ucsm_config_policy_moid]
+    for_each = var.ucsm_config_policy_moid == null ? [] : [var.ucsm_config_policy_moid]
     content {
       moid = ucsm_config.value
     }

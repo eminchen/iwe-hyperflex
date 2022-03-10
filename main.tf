@@ -78,10 +78,10 @@ module "hx" {
   #   name = ""
   # }
 
-  cluster_storage_policy = {
-    use_existing  = var.cluster_storage_policy.use_existing
-    name          = var.cluster_storage_policy.name
-  }
+  # cluster_storage_policy = {
+  #   use_existing  = var.cluster_storage_policy.use_existing
+  #   name          = var.cluster_storage_policy.name
+  # }
 
   auto_support_policy = {
     use_existing  = var.auto_support_policy.use_existing
@@ -98,10 +98,10 @@ module "hx" {
     name          = var.cluster_network_policy.name
   }
 
-  proxy_setting_policy = {
-    use_existing  = var.proxy_setting_policy.use_existing
-    name          = var.proxy_setting_policy.name
-  }
+  # proxy_setting_policy = {
+  #   use_existing  = var.proxy_setting_policy.use_existing
+  #   name          = var.proxy_setting_policy.name
+  # }
 
   # ext_fc_storage_policy = {
   #   use_existing = true
@@ -114,8 +114,13 @@ module "hx" {
   # }
 
   software_version_policy = {
-    use_existing  = var.software_version_policy.use_existing
-    name          = var.software_version_policy.name
+    use_existing            = var.software_version_policy.use_existing
+    name                    = var.software_version_policy.name
+    
+    description             = var.software_version_policy.description
+    server_firmware_version = var.software_version_policy.server_firmware_version
+    hypervisor_version      = var.software_version_policy.hypervisor_version
+    hxdp_version            = var.software_version_policy.hxdp_version
   }
 
   # ucsm_config_policy = {

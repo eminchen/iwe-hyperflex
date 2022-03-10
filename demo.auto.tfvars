@@ -83,8 +83,8 @@ cluster_network_policy = {
 # }
 
 software_version_policy = {
-  use_existing  = false
-  name          = "tf-iwe-sw-version"
+  use_existing            = false
+  name                    = "tf-iwe-sw-version"
 
   description             = "IWE cluster software version policy created by Terraform"
   server_firmware_version = "4.2(1l)"

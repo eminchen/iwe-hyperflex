@@ -11,7 +11,7 @@ module "software_version_policy" {
 }
 ```
 
-This module create a new local credential (a.k.a security) policy for reference in one or more HyperFlex cluster profiles.
+This module create a new software version policy for reference in one or more HyperFlex cluster profiles.
 
 These resources are created
 * [software version policy](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/data-sources/hyperflex_software_version_policy)

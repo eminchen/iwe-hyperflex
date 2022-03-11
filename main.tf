@@ -12,6 +12,7 @@ terraform {
       # version = "1.0.12"
     }
   }
+  experiments = [module_variable_optional_attrs]
 }
 
 ### Providers ###
@@ -116,7 +117,7 @@ module "hx" {
   software_version_policy = {
     use_existing            = var.software_version_policy.use_existing
     name                    = var.software_version_policy.name
-    
+
     description             = var.software_version_policy.description
     server_firmware_version = var.software_version_policy.server_firmware_version
     hypervisor_version      = var.software_version_policy.hypervisor_version

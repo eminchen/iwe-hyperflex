@@ -79,72 +79,72 @@ module "sys_config_policy" {
   source      = "./modules/sys_config_policy"
   count       = var.sys_config_policy.use_existing == true ? 0 : 1
 
-  org_name    = var.organization
-  tags        = var.tags
+  organization  = var.organization
+  tags          = var.tags
 }
 
 module "vcenter_config_policy" {
   source      = "./modules/vcenter_config_policy"
   count       = var.vcenter_config_policy.use_existing == true && var.cluster.hypervisor_type == "ESXi" ? 0 : 1
 
-  org_name    = var.organization
-  tags        = var.tags
+  organization  = var.organization
+  tags          = var.tags
 }
 
 module "cluster_storage_policy" {
   source      = "./modules/cluster_storage_policy"
   count       = var.cluster_storage_policy.use_existing == true ? 0 : 1
 
-  org_name    = var.organization
-  tags        = var.tags
+  organization  = var.organization
+  tags          = var.tags
 }
 
 module "auto_support_policy" {
   source      = "./modules/auto_support_policy"
   count       = var.auto_support_policy.use_existing == true ? 0 : 1
 
-  org_name    = var.organization
-  tags        = var.tags
+  organization  = var.organization
+  tags          = var.tags
 }
 
 module "node_config_policy" {
   source      = "./modules/node_config_policy"
   count       = var.node_config_policy.use_existing == true ? 0 : 1
 
-  org_name    = var.organization
-  tags        = var.tags
+  organization  = var.organization
+  tags          = var.tags
 }
 
 module "cluster_network_policy" {
   source      = "./modules/cluster_network_policy"
   count       = var.cluster_network_policy.use_existing == true ? 0 : 1
 
-  org_name    = var.organization
-  tags        = var.tags
+  organization  = var.organization
+  tags          = var.tags
 }
 
 module "proxy_setting_policy" {
   source      = "./modules/proxy_setting_policy"
   count       = var.proxy_setting_policy.use_existing == true ? 0 : 1
 
-  org_name    = var.organization
-  tags        = var.tags
+  organization  = var.organization
+  tags          = var.tags
 }
 
 module "ext_fc_storage_policy" {
   source      = "./modules/ext_fc_storage_policy"
   count       = var.ext_fc_storage_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 0 : 1
 
-  org_name    = var.organization
-  tags        = var.tags
+  organization  = var.organization
+  tags          = var.tags
 }
 
 module "ext_iscsi_storage_policy" {
   source      = "./modules/ext_iscsi_storage_policy"
   count       = var.ext_iscsi_storage_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 0 : 1
 
-  org_name    = var.organization
-  tags        = var.tags
+  organization  = var.organization
+  tags          = var.tags
 }
 
 module "software_version_policy" {
@@ -162,8 +162,8 @@ module "ucsm_config_policy" {
   source      = "./modules/ucsm_config_policy"
   count       = var.ucsm_config_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 0 : 1
 
-  org_name    = var.organization
-  tags        = var.tags
+  organization  = var.organization
+  tags          = var.tags
 }
 
 ### Main Cluster Profile ###
@@ -206,13 +206,13 @@ module "cluster_profile" {
   ### REQUIRED POLICIES ###
   local_cred_policy_moid        = var.local_cred_policy.use_existing == true ? data.intersight_hyperflex_local_credential_policy.this.0.results.0.moid : module.local_cred_policy.0.moid
   sys_config_policy_moid        = var.sys_config_policy.use_existing == true ? data.intersight_hyperflex_sys_config_policy.this.0.results.0.moid : module.sys_config_policy.0.moid
-  cluster_storage_policy_moid   = var.cluster_storage_policy.use_existing == true ? data.intersight_hyperflex_cluster_storage_policy.this.0.results.0.moid : module.cluster_storage_policy.0.moid
   node_config_policy_moid       = var.node_config_policy.use_existing == true ? data.intersight_hyperflex_node_config_policy.this.0.results.0.moid : module.node_config_policy.0.moid
   cluster_network_policy_moid   = var.cluster_network_policy.use_existing == true ? data.intersight_hyperflex_cluster_network_policy.this.0.results.0.moid : module.cluster_network_policy.0.moid
   software_version_policy_moid  = var.software_version_policy.use_existing == true ? data.intersight_hyperflex_software_version_policy.this.0.results.0.moid : module.software_version_policy.0.moid
 
   ### OPTIONAL POLICIES ###
-  auto_support_policy_moid      = var.auto_support_policy == null ? null : ( var.auto_support_policy.use_existing == true ? data.intersight_hyperflex_auto_support_policy.this.0.results.0.moid : module.auto_support_policy.0.moid
+  auto_support_policy_moid      = var.auto_support_policy == null ? null : ( var.auto_support_policy.use_existing == true ? data.intersight_hyperflex_auto_support_policy.this.0.results.0.moid : module.auto_support_policy.0.moid )
+  cluster_storage_policy_moid   = var.cluster_storage_policy == null ? null : ( var.cluster_storage_policy.use_existing == true ? data.intersight_hyperflex_cluster_storage_policy.this.0.results.0.moid : module.cluster_storage_policy.0.moid )
   proxy_setting_policy_moid     = var.proxy_setting_policy == null ? null : ( var.proxy_setting_policy.use_existing == true ? data.intersight_hyperflex_proxy_setting_policy.this.0.results.0.moid : module.proxy_setting_policy.0.moid )
 
   ### VMWARE HYPERVISOR OPTIONAL ###

@@ -21,7 +21,7 @@ variable "action" {
 
   validation {
     condition = contains(["Validate", "Deploy", "Continue", "Retry", "Abort", "Unassign"], var.action)
-    error_message = "The action value must be one of Validate, Deploy, Continue, Retry, Abort or Unassign"
+    error_message = "The action value must be one of Validate, Deploy, Continue, Retry, Abort or Unassign."
   }
 }
 
@@ -107,8 +107,11 @@ variable "cluster_storage_policy" {
 
 variable "auto_support_policy" {
   type = object({
-    use_existing = bool
-    name         = string
+    use_existing              = bool
+    name                      = string
+    description               = string
+    admin_state               = bool
+    service_ticket_receipient = string
 
   })
 }

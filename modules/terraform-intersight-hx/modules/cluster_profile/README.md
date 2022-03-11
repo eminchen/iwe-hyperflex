@@ -64,7 +64,6 @@ No modules.
 | <a name="input_wwxn_prefix"></a> [wwxn\_prefix](#input\_wwxn\_prefix) | The WWxN prefix in the form of 20:00:00:25:B5:XX. | `string` | `""` | yes |
 | <a name="input_auto_support_policy_moid"></a> [auto\_support\_policy\_moid](#input\_auto\_support\_policy\_moid) | (Optional) The MOID for the referenced auto support policy | `string` | `""` | no |
 | <a name="input_cluster_internal_subnet"></a> [cluster\_internal\_subnet](#input\_cluster\_internal\_subnet) | A CIDR subnet for the cluster internal network. This applies to Intersight Workload Engine clusters only. | <pre>object({<br>    gateway  = string<br>    ip_address  = string<br>    netmask  = string<br>  })</pre> | n/a | no |
-| <a name="input_local_cred_policy"></a> [local\_cred\_policy](#input\_local\_cred\_policy) | A CIDR subnet for the cluster internal network. This applies to Intersight Workload Engine clusters only. | <pre>object({<br>    gateway  = string<br>    ip_address  = string<br>    netmask  = string<br>  })</pre> | n/a | no |
 | <a name="input_cluster_network_policy_moid"></a> [cluster\_network\_policy\_moid](#input\_cluster\_network\_policy\_moid) | The MOID for the referenced cluster network policy | `string` | `""` | yes |
 | <a name="input_cluster_storage_policy_moid"></a> [cluster\_storage\_policy\_moid](#input\_cluster\_storage\_policy\_moid) | (Optional) The MOID for the referenced cluster storage policy | `string` | `""` | no |
 | <a name="input_ext_fc_storage_policy_moid"></a> [ext\_fc\_storage\_policy\_moid](#input\_ext\_fc\_storage\_policy\_moid) | (Optional) The MOID for the referenced external FC storage policy | `string` | `""` | no |
@@ -76,12 +75,12 @@ No modules.
 | <a name="input_storage_client_vlan"></a> [storage\_client\_vlan](#input\_storage\_client\_vlan) | (Optional) The VLAN for the HyperFlex storage client traffic (IWE Only) | <pre>object({<br>    name  = string<br>    vlan_id  = number<br>    ip_address  = string<br>    netmask  = string<br>  })</pre> | n/a | no |
 | <a name="input_storage_data_vlan"></a> [storage\_data\_vlan](#input\_storage\_data\_vlan) | The VLAN for the HyperFlex storage data traffic. | <pre>object({<br>    name  = string<br>    vlan_id  = number<br>  })</pre> | n/a | yes |
 | <a name="input_sys_config_policy_moid"></a> [sys\_config\_policy\_moid](#input\_sys\_config\_policy\_moid) | The MOID for the referenced system configuration policy | `string` | `""` | yes |
-| <a name="input_vcenter_config_policy_moid"></a> [vcenter\_config\_policy\_moid](#input\_vcenter\_config\_policy\_moid) | (Optional) The MOID for the referenced vCenter configuration policy | `string` | `""` | no |
-| <a name="input_ucsm_config_policy_moid"></a> [ucsm\_config\_policy\_moid](#input\_ucsm\_config\_policy\_moid) | (Optional) The MOID for the referenced UCSM configuration policy | `string` | `""` | no |
+| <a name="input_vcenter_config_policy_moid"></a> [vcenter\_config\_policy\_moid](#input\_vcenter\_config\_policy\_moid) | (Optional) The MOID for the referenced vCenter configuration policy (ESXi Only)| `string` | `""` | no |
+| <a name="input_ucsm_config_policy_moid"></a> [ucsm\_config\_policy\_moid](#input\_ucsm\_config\_policy\_moid) | (Optional) The MOID for the referenced UCSM configuration policy (UCSM FI-attached Only)| `string` | `""` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_moid"></a> [moid](#output\_moid) | n/a |
+| <a name="output_moid"></a> [moid](#output\_moid) | MOID of HyperFlex cluster profile |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

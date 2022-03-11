@@ -11,7 +11,9 @@ module "node_config_policy" {
 }
 ```
 
-This module create a new auto support policy for reference in one or more HyperFlex cluster profiles.
+This module create a new node configuration policy for reference in one or more HyperFlex cluster profiles.
+
+A policy specifying node details such as management and storage data IP ranges. For HyperFlex Edge, storage data IP range is pre-defined.
 
 These resources are created
 * [node config policy](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/hyperflex_node_config_policy)

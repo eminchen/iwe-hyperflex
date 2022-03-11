@@ -5,30 +5,27 @@ data "intersight_organization_organization" "this" {
 
 # Creating cluster profile
 resource "intersight_hyperflex_cluster_profile" "this" {
+  name                          = var.name
+  description                   = var.description
 
   action                        = var.action
+  wait_for_completion           = var.wait_for_completion # Bool?
 
   data_ip_address               = var.data_ip_address
-  description                   = var.description
   host_name_prefix              = var.host_name_prefix
   hypervisor_control_ip_address = var.hypervisor_control_ip_address
   hypervisor_type               = var.hypervisor_type
   mac_address_prefix            = var.mac_address_prefix
   mgmt_ip_address               = var.mgmt_ip_address
   mgmt_platform                 = var.mgmt_platform
-  name                          = var.name
   replication                   = var.replication
-
-  ## IWE Only ##
-  storage_client_ip_address     = var.storage_client_ip_address
-  storage_client_netmask        = var.storage_client_netmask
   storage_cluster_auxiliary_ip  = var.storage_cluster_auxiliary_ip #?
-
   storage_type                  = var.storage_type #?
-
   wwxn_prefix                   = var.wwxn_prefix #?
 
-  wait_for_completion           = var.wait_for_completion # Bool?
+  ## IWE Only ##
+  storage_client_ip_address     = var.storage_client_vlan.ip_address
+  storage_client_netmask        = var.storage_client_vlan.netmask
 
   ## NEEDED? ##
   /*
@@ -120,8 +117,8 @@ resource "intersight_hyperflex_cluster_profile" "this" {
   }
 
   storage_data_vlan {
-    name    = var.storage_data_vlan_name
-    vlan_id = var.storage_data_vlan_id
+    name    = var.storage_data_vlan.name
+    vlan_id = var.storage_data_vlan.vlan_id
   }
 
   sys_config {

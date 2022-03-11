@@ -13,6 +13,8 @@ module "local_cred_policy" {
 
 This module create a new local credential (a.k.a security) policy for reference in one or more HyperFlex cluster profiles.
 
+A policy specifying credentials for HyperFlex cluster such as controller VM password, hypervisor username, and password.
+
 These resources are created
 * [local credential policy](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/hyperflex_local_credential_policy)
 

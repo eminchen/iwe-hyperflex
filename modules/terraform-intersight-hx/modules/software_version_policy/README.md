@@ -13,6 +13,8 @@ module "software_version_policy" {
 
 This module create a new software version policy for reference in one or more HyperFlex cluster profiles.
 
+A policy capturing software versions for different HyperFlex Cluster compatible components ( like HyperFlex Data Platform, Hypervisor, etc. ), that the user wishes to apply on the HyperFlex cluster.
+
 These resources are created
 * [software version policy](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/data-sources/hyperflex_software_version_policy)
 

@@ -1,22 +1,22 @@
-# addons - Intersight HyperFlex Auto Support Policy Terraform Module
+# addons - Intersight HyperFlex System Config Policy Terraform Module
 
 ## Usage
 
 ```hcl
-module "auto_support_policy" {
+module "sys_config_policy" {
 
-  source = "./modules/auto_support_policy"
+  source = "./modules/sys_config_policy"
 
   # omitted...
 }
 ```
 
-This module create a new auto support policy for reference in one or more HyperFlex cluster profiles.
+This module create a new system configuration policy for reference in one or more HyperFlex cluster profiles.
 
-A policy specifying the configuration to automatically generate support tickets with Cisco TAC.
+A policy specifying system configuration such as timezone, DNS servers, and NTP Servers.
 
 These resources are created
-* [auto support policy](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/hyperflex_auto_support_policy)
+* [system config policy](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/hyperflex_sys_config_policy)
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -40,7 +40,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [intersight_hyperflex_auto_support_policy.this](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/hyperflex_auto_support_policy) | resource |
+| [intersight_hyperflex_sys_config_policy.this](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/hyperflex_sys_config_policy) | resource |
 | [intersight_organization_organization.this](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/data-sources/organization_organization) | data source |
 
 ## Inputs
@@ -49,8 +49,10 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_name"></a> [name](#input\_name) | Policy name. | `string` | `""` | yes |
 | <a name="input_description"></a> [description](#input\_description) | Policy description. | `string` | `""` | no |
-| <a name="input_admin_state"></a> [admin\_state](#input\_admin\_state) | Enable or disable Auto-Support. | `bool` | `""` | yes |
-| <a name="input_service_ticket_receipient"></a> [service\_ticket\_receipient](#input\_servic\_ticket\_receipient) | The recipient email address for support tickets. | `string` | `""` | yes |
+| <a name="input_dns_domain_name"></a> [dns\_domain\_name](#input\_dns\_domain\_name) | The DNS Search Domain Name. | `string` | `""` | yes |
+| <a name="input_dns_servers"></a> [dns\_servers](#input\_dns\_servers) | List of DNS servers. | `list(string)` | `""` | yes |
+| <a name="input_ntp_servers"></a> [ntp\_servers](#input\_ntp\_servers) | List of NTP servers. | `list(string)` | `""` | yes |
+| <a name="input_timezone"></a> [timezone](#input\_timezone) | The timezone of the HyperFlex cluster's system clock (i.e. Australia/Sydney). | `string` | `""` | yes |
 
 ## Outputs
 

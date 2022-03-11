@@ -1,4 +1,4 @@
-# addons - Intersight HyperFlex Node Configuration Policy Terraform Module
+# Intersight HyperFlex Node Configuration Policy Terraform Module
 
 ## Usage
 

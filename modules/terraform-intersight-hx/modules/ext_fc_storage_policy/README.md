@@ -1,4 +1,4 @@
-# addons - Intersight HyperFlex External FC Storage Configuration Policy Terraform Module
+# Intersight HyperFlex External FC Storage Configuration Policy Terraform Module
 
 ## Usage
 

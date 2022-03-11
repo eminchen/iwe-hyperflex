@@ -1,4 +1,4 @@
-# addons - Intersight HyperFlex vCenter Configuration Policy Terraform Module
+# Intersight HyperFlex vCenter Configuration Policy Terraform Module
 
 ## Usage
 

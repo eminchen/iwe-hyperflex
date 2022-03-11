@@ -1,4 +1,4 @@
-# addons - Intersight HyperFlex Proxy Setting Policy Terraform Module
+# Intersight HyperFlex Proxy Setting Policy Terraform Module
 
 ## Usage
 

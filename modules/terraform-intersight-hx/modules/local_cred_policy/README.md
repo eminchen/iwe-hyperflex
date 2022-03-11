@@ -1,4 +1,4 @@
-# addons - Intersight HyperFlex Local Credential (Security) Policy Terraform Module
+# Intersight HyperFlex Local Credential (Security) Policy Terraform Module
 
 ## Usage
 

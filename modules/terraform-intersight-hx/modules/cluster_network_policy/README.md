@@ -1,4 +1,4 @@
-# addons - Intersight HyperFlex Cluster Network Policy Terraform Module
+# Intersight HyperFlex Cluster Network Policy Terraform Module
 
 ## Usage
 

@@ -1,4 +1,4 @@
-# addons - Intersight HyperFlex Auto Support Policy Terraform Module
+# Intersight HyperFlex Auto Support Policy Terraform Module
 
 ## Usage
 

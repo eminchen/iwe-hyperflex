@@ -1,4 +1,4 @@
-# addons - Intersight HyperFlex UCSM Configuration Policy Terraform Module
+# Intersight HyperFlex UCSM Configuration Policy Terraform Module
 
 ## Usage
 

@@ -1,4 +1,4 @@
-# addons - Intersight HyperFlex Cluster Storage Policy Terraform Module
+# Intersight HyperFlex Cluster Storage Policy Terraform Module
 
 ## Usage
 

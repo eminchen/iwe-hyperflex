@@ -1,4 +1,4 @@
-# addons - Intersight HyperFlex Cluster Profile Terraform Module
+# Intersight HyperFlex Cluster Profile Terraform Module
 
 ## Usage
 
@@ -62,8 +62,6 @@ No modules.
 | <a name="input_storage_cluster_auxiliary_ip"></a> [storage\_cluster\_auxiliary\_ip](#input\_storage\_cluster\_auxiliary\_ip) | The auxiliary storage IP address for the HyperFlex cluster. For two node clusters, this is the IP address of the auxiliary ZK controller. | `string` | `""` | yes |
 | <a name="input_storage_type"></a> [storage\_type](#input\_storage\_type) | The storage type used for the HyperFlex cluster (HyperFlex Storage or 3rd party).* HyperFlexDp - The type of storage is HyperFlex Data Platform.* ThirdParty - The type of storage is 3rd Party Storage (PureStorage, etc..). | `string` | `"HyperFlexDp"` | no |
 | <a name="input_wwxn_prefix"></a> [wwxn\_prefix](#input\_wwxn\_prefix) | The WWxN prefix in the form of 20:00:00:25:B5:XX. | `string` | `""` | yes |
-| <a name="input_storage_client_ip_address"></a> [storage\_client\_ip\_address](#input\_storage\_client\_ip\_address) | The storage client IP address for the HyperFlex cluster. | `string` | `""` | yes |
-| <a name="input_storage_client_netmask"></a> [storage\_client\_ip\_address](#input\_storage\_client\_netmask) | The netmask for the Storage client network IP address. | `string` | `""` | yes |
 | <a name="input_auto_support_policy_moid"></a> [auto\_support\_policy\_moid](#input\_auto\_support\_policy\_moid) | (Optional) The MOID for the referenced auto support policy | `string` | `""` | no |
 | <a name="input_cluster_internal_subnet"></a> [cluster\_internal\_subnet](#input\_cluster\_internal\_subnet) | A CIDR subnet for the cluster internal network. This applies to Intersight Workload Engine clusters only. | <pre>object({<br>    gateway  = string<br>    ip_address  = string<br>    netmask  = string<br>  })</pre> | n/a | no |
 | <a name="input_local_cred_policy"></a> [local\_cred\_policy](#input\_local\_cred\_policy) | A CIDR subnet for the cluster internal network. This applies to Intersight Workload Engine clusters only. | <pre>object({<br>    gateway  = string<br>    ip_address  = string<br>    netmask  = string<br>  })</pre> | n/a | no |

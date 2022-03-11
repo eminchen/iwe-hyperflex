@@ -1,4 +1,4 @@
-# addons - Intersight HyperFlex Software Version Policy Terraform Module
+# Intersight HyperFlex Software Version Policy Terraform Module
 
 ## Usage
 

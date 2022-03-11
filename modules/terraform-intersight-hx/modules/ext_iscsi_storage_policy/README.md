@@ -1,4 +1,4 @@
-# addons - Intersight HyperFlex External iSCSI Storage Configuration Policy Terraform Module
+# Intersight HyperFlex External iSCSI Storage Configuration Policy Terraform Module
 
 ## Usage
 

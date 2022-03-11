@@ -103,6 +103,11 @@ module "auto_support_policy" {
   source      = "./modules/auto_support_policy"
   count       = var.auto_support_policy.use_existing == true ? 0 : 1
 
+  name                      = var.auto_support_policy.name
+  description               = var.auto_support_policy.description
+  admin_state               = var.auto_support_policy.admin_state
+  service_ticket_receipient = var.auto_support_policy.service_ticket_receipient
+
   organization  = var.organization
   tags          = var.tags
 }
@@ -110,6 +115,14 @@ module "auto_support_policy" {
 module "node_config_policy" {
   source      = "./modules/node_config_policy"
   count       = var.node_config_policy.use_existing == true ? 0 : 1
+
+  name                        = var.node_config_policy.name
+  description                 = var.node_config_policy.escription
+  node_name_prefix            = var.node_config_policy.node_name_prefix
+  data_ip_range               = var.node_config_policy.data_ip_range
+  hxdp_ip_range               = var.node_config_policy.hxdp_ip_range
+  hypervisor_control_ip_range = var.node_config_policy.hypervisor_control_ip_range
+  mgmt_ip_range               = var.node_config_policy.mgmt_ip_range
 
   organization  = var.organization
   tags          = var.tags
@@ -134,6 +147,13 @@ module "proxy_setting_policy" {
 module "ext_fc_storage_policy" {
   source      = "./modules/ext_fc_storage_policy"
   count       = var.ext_fc_storage_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 0 : 1
+
+  name              = var.ext_fc_storage_policy.name
+  description       = var.ext_fc_storage_policy.description
+  admin_state       = var.ext_fc_storage_policy.admin_state
+  exta_traffic      = var.ext_fc_storage_policy.exta_traffic
+  extb_traffic      = var.ext_fc_storage_policy.extb_traffic
+  wwxn_prefix_range = var.ext_fc_storage_policy.wwxn_prefix_range
 
   organization  = var.organization
   tags          = var.tags

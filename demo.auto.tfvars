@@ -5,16 +5,16 @@ tags                = []
 
 cluster = {
   ### COMMON SETTINGS ###
-  name                          = "tf-iwe"
-  description                   = "Intersight Workload Engine OS Cluster deployed by Terrafrom"
+  name                          = "tf-hx-vsphere"
+  description                   = "HX Cluster deployed by Terrafrom"
   data_ip_address               = "169.254.0.1" # 169.254.0.1
   hypervisor_control_ip_address = "172.31.255.2"
-  hypervisor_type               = "IWE" # ESXi, IWE
+  hypervisor_type               = "ESXi" # ESXi, IWE
   mac_address_prefix            = "00:25:B5:00"
   mgmt_ip_address               = "10.67.29.138"
   mgmt_platform                 = "FI" # FI, EDGE
   replication                   = 3
-  host_name_prefix              = "tf-iwe"
+  host_name_prefix              = "tf-hx-vsphere"
 
   # storage_type                  = "HyperFlexDp"
   storage_data_vlan = {
@@ -26,19 +26,19 @@ cluster = {
   # storage_type                  = "" # HyperFlexDp, ThirdParty
   # wwxn_prefix                   = ""
 
-  ### IWE HYPERVISOR ONLY ###
-  storage_client_vlan = {
-    name        = "HX-STR-CLIENT-104"
-    vlan_id     = 104
-    ip_address  = "169.254.240.1"
-    netmask     = "255.255.255.0"
-    }
-
-  cluster_internal_subnet = {
-    gateway                     = "192.168.0.1"
-    ip_address                  = "192.168.0.0"
-    netmask                     = "255.255.0.0"
-    }
+  # ### IWE HYPERVISOR ONLY ###
+  # storage_client_vlan = {
+  #   name        = "HX-STR-CLIENT-104"
+  #   vlan_id     = 104
+  #   ip_address  = "169.254.240.1"
+  #   netmask     = "255.255.255.0"
+  #   }
+  #
+  # cluster_internal_subnet = {
+  #   gateway                     = "192.168.0.1"
+  #   ip_address                  = "192.168.0.0"
+  #   netmask                     = "255.255.0.0"
+  #   }
 
   }
 
@@ -52,10 +52,10 @@ sys_config_policy = {
   name          = "mel-dc4-hx1-sys-config-policy"
 }
 
-# vcenter_config_policy = {
-#   use_existing = true
-#   name = ""
-# }
+vcenter_config_policy = {
+  use_existing  = true
+  name          = "mel-dc4-hx1-vcenter-config-policy"
+}
 
 # cluster_storage_policy = {
 #   use_existing  = true
@@ -72,10 +72,10 @@ node_config_policy = {
   name          = "mel-dc4-hx1-node-config-policy"
 }
 
-cluster_network_policy = {
-  use_existing  = true
-  name          = "mel-dc4-iwe-cluster-network-policy"
-}
+# cluster_network_policy = {
+#   use_existing  = true
+#   name          = "mel-dc4-iwe-cluster-network-policy"
+# }
 
 # proxy_setting_policy = {
 #   use_existing  = true
@@ -94,11 +94,11 @@ cluster_network_policy = {
 
 software_version_policy = {
   use_existing            = false
-  name                    = "tf-iwe-sw-version"
+  name                    = "tf-vsphere-sw-version"
 
-  description             = "IWE cluster software version policy created by Terraform"
+  description             = "HX cluster software version policy created by Terraform"
   server_firmware_version = "4.2(1l)"
-  hypervisor_version      = "1.2(1a)"
+  # hypervisor_version      = "1.2(1a)"
   hxdp_version            = "4.5(2b)"
 }
 

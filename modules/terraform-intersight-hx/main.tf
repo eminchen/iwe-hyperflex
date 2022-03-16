@@ -30,7 +30,7 @@ data "intersight_hyperflex_node_config_policy" "this" {
 }
 
 data "intersight_hyperflex_cluster_network_policy" "this" {
-  count = var.cluster_network_policy.use_existing == true ? 1 : 0
+  count = var.cluster_network_policy != null ? (var.cluster_network_policy.use_existing == true ? 1 : 0) : 0
   name  = var.cluster_network_policy.name
 }
 
@@ -153,7 +153,7 @@ module "node_config_policy" {
 
 module "cluster_network_policy" {
   source      = "./modules/cluster_network_policy"
-  count       = var.cluster_network_policy.use_existing == true ? 0 : 1
+  count       = var.cluster_network_policy != null ? (var.cluster_network_policy.use_existing == true ? 0 : 1) : 0
 
   name                = var.cluster_network_policy.name
   description         = var.cluster_network_policy.description

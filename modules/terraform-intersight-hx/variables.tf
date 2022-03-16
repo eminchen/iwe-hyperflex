@@ -2,7 +2,7 @@
 
 variable "action" {
   type = string
-  default = "Validate" # Validate, Deploy, Continue, Retry, Abort, Unassign
+  default = "Unassign" # Validate, Deploy, Continue, Retry, Abort, Unassign
 
   validation {
     condition = contains(["Validate", "Deploy", "Continue", "Retry", "Abort", "Unassign"], var.action)

@@ -1,4 +1,4 @@
-action              = "Validate"
+action              = "Unassign"
 wait_for_completion = false
 organization        = "default"
 tags                = []

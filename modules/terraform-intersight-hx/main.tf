@@ -10,17 +10,17 @@ data "intersight_hyperflex_sys_config_policy" "this" {
 }
 
 data "intersight_hyperflex_vcenter_config_policy" "this" {
-  count = var.vcenter_config_policy.use_existing == true && var.cluster.hypervisor_type == "ESXi" ? 1 : 0
+  count = var.vcenter_config_policy != null ? (var.vcenter_config_policy.use_existing == true && var.cluster.hypervisor_type == "ESXi" ? 0 : 1) : 0
   name  = var.vcenter_config_policy.name
 }
 
 data "intersight_hyperflex_cluster_storage_policy" "this" {
-  count = var.cluster_storage_policy.use_existing == true ? 1 : 0
+  count = var.cluster_storage_policy != null ? (var.cluster_storage_policy.use_existing == true && var.cluster.hypervisor_type == "ESXi" ? 0 : 1) : 0
   name  = var.cluster_storage_policy.name
 }
 
 data "intersight_hyperflex_auto_support_policy" "this" {
-  count = var.auto_support_policy.use_existing == true ? 1 : 0
+  count = var.auto_support_policy != null ? (var.auto_support_policy.use_existing == true ? 1 : 0) : 0
   name  = var.auto_support_policy.name
 }
 
@@ -35,17 +35,17 @@ data "intersight_hyperflex_cluster_network_policy" "this" {
 }
 
 data "intersight_hyperflex_proxy_setting_policy" "this" {
-  count = var.proxy_setting_policy.use_existing == true ? 1 : 0
+  count = var.proxy_setting_policy != null ? (var.proxy_setting_policy.use_existing == true ? 1 : 0) : 0
   name  = var.proxy_setting_policy.name
 }
 
 data "intersight_hyperflex_ext_fc_storage_policy" "this" {
-  count = var.ext_fc_storage_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 1 : 0
+  count = var.ext_fc_storage_policy != null ? (var.ext_fc_storage_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 1 : 0) : 0
   name  = var.ext_fc_storage_policy.name
 }
 
 data "intersight_hyperflex_ext_iscsi_storage_policy" "this" {
-  count = var.ext_iscsi_storage_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 1 : 0
+  count = var.ext_iscsi_storage_policy != null ? (var.ext_iscsi_storage_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 1 : 0) : 0
   name  = var.ext_iscsi_storage_policy.name
 }
 
@@ -55,7 +55,7 @@ data "intersight_hyperflex_software_version_policy" "this" {
 }
 
 data "intersight_hyperflex_ucsm_config_policy" "this" {
-  count = var.ucsm_config_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 1 : 0
+  count = var.ucsm_config_policy != null ? (var.ucsm_config_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 1 : 0) : 0
   name  = var.ucsm_config_policy.name
 }
 
@@ -93,7 +93,7 @@ module "sys_config_policy" {
 module "vcenter_config_policy" {
   ## Not supported by IWE ##
   source      = "./modules/vcenter_config_policy"
-  count       = var.vcenter_config_policy.use_existing == true && var.cluster.hypervisor_type == "ESXi" ? 0 : 1
+  count       = var.vcenter_config_policy != null ? (var.vcenter_config_policy.use_existing == true && var.cluster.hypervisor_type == "ESXi" ? 0 : 1) : 0
 
   name        = var.vcenter_config_policy.name
   description = var.vcenter_config_policy.description
@@ -110,7 +110,7 @@ module "vcenter_config_policy" {
 module "cluster_storage_policy" {
   ## Not supported by IWE ##
   source      = "./modules/cluster_storage_policy"
-  count       = var.cluster_storage_policy.use_existing == true && var.cluster.hypervisor_type == "ESXi" ? 0 : 1
+  count       = var.cluster_storage_policy != null ? (var.cluster_storage_policy.use_existing == true && var.cluster.hypervisor_type == "ESXi" ? 0 : 1) : 0
 
   name                            = var.cluster_storage_policy.name
   description                     = var.cluster_storage_policy.description
@@ -124,7 +124,7 @@ module "cluster_storage_policy" {
 
 module "auto_support_policy" {
   source      = "./modules/auto_support_policy"
-  count       = var.auto_support_policy.use_existing == true ? 0 : 1
+  count       = var.auto_support_policy != null ? (var.auto_support_policy.use_existing == true ? 0 : 1) : 0
 
   name                      = var.auto_support_policy.name
   description               = var.auto_support_policy.description
@@ -170,7 +170,7 @@ module "cluster_network_policy" {
 
 module "proxy_setting_policy" {
   source      = "./modules/proxy_setting_policy"
-  count       = var.proxy_setting_policy.use_existing == true ? 0 : 1
+  count       = var.proxy_setting_policy != null ? (var.proxy_setting_policy.use_existing == true ? 0 : 1) : 0
 
   name          = var.proxy_setting_policy.name
   description   = var.proxy_setting_policy.description
@@ -185,7 +185,7 @@ module "proxy_setting_policy" {
 
 module "ext_fc_storage_policy" {
   source      = "./modules/ext_fc_storage_policy"
-  count       = var.ext_fc_storage_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 0 : 1
+  count       = var.ext_fc_storage_policy != null ? (var.ext_fc_storage_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 0 : 1) : 0
 
   name              = var.ext_fc_storage_policy.name
   description       = var.ext_fc_storage_policy.description
@@ -200,7 +200,7 @@ module "ext_fc_storage_policy" {
 
 module "ext_iscsi_storage_policy" {
   source      = "./modules/ext_iscsi_storage_policy"
-  count       = var.ext_iscsi_storage_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 0 : 1
+  count       = var.ext_iscsi_storage_policy != null ? (var.ext_iscsi_storage_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 0 : 1) : 0
 
   name              = var.ext_iscsi_storage_policy.name
   description       = var.ext_iscsi_storage_policy.description
@@ -225,7 +225,7 @@ module "software_version_policy" {
 
 module "ucsm_config_policy" {
   source      = "./modules/ucsm_config_policy"
-  count       = var.ucsm_config_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 0 : 1
+  count       = var.ucsm_config_policy != null ? (var.ucsm_config_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 0 : 1) : 0
 
   name                    = var.ucsm_config_policy.name
   description             = var.ucsm_config_policy.description
@@ -258,7 +258,7 @@ module "cluster_profile" {
   host_name_prefix              = var.cluster.host_name_prefix
   storage_data_vlan             = var.cluster.storage_data_vlan
   storage_cluster_auxiliary_ip  = var.cluster.storage_cluster_auxiliary_ip #?
-  storage_type                  = var.cluster.storage_type #?
+  storage_type                  = var.cluster.storage_type == null ? "HyperFlexDp" : var.cluster.storage_type  
   wwxn_prefix                   = var.cluster.wwxn_prefix #?
 
   ## IWE HYPERVISOR OPTIONAL ##

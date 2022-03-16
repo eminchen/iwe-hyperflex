@@ -7,5 +7,5 @@ terraform {
       version = ">=1.0.23"
     }
   }
-  experiments = [module_variable_optional_attrs]
+  # experiments = [module_variable_optional_attrs]
 }

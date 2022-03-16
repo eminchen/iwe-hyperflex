@@ -1,7 +1,7 @@
-action              = ""
+action              = "Validate"
 wait_for_completion = false
 organization        = "default"
-tags                = {}
+tags                = []
 
 cluster = {
   ### COMMON SETTINGS ###
@@ -16,6 +16,7 @@ cluster = {
   replication                   = 3
   host_name_prefix              = "tf-iwe"
 
+  # storage_type                  = "HyperFlexDp"
   storage_data_vlan = {
     name    = "HX-STR-DATA-103"
     vlan_id = 103
@@ -43,7 +44,7 @@ cluster = {
 
 local_cred_policy = {
   use_existing  = true
-  name          = "mel-dc4-hx1-local-local-credential-policy"
+  name          = "mel-dc4-hx1-local-credential-policy"
 }
 
 sys_config_policy = {

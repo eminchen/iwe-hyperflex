@@ -20,7 +20,7 @@ resource "intersight_hyperflex_cluster_profile" "this" {
   mgmt_platform                 = var.mgmt_platform
   replication                   = var.replication
   storage_cluster_auxiliary_ip  = var.storage_cluster_auxiliary_ip #?
-  storage_type                  = var.storage_type #?
+  storage_type                  = var.storage_type
   wwxn_prefix                   = var.wwxn_prefix #?
 
   ## IWE Only ##

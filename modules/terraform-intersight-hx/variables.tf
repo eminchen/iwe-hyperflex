@@ -128,30 +128,30 @@ variable "node_config_policy" {
     name             = string
     description      = optional(string)
     node_name_prefix = optional(string)
-    data_ip_range = object({
-      end_addr    = optional(string)
-      gateway     = optional(string)
-      netmask     = optional(string)
-      start_addr  = optional(string)
-      })
-    hxdp_ip_range = object({
-      end_addr    = optional(string)
-      gateway     = optional(string)
-      netmask     = optional(string)
-      start_addr  = optional(string)
-      })
-    hypervisor_control_ip_range = object({
-      end_addr    = optional(string)
-      gateway     = optional(string)
-      netmask     = optional(string)
-      start_addr  = optional(string)
-      })
-    mgmt_ip_range = object({
-      end_addr    = optional(string)
-      gateway     = optional(string)
-      netmask     = optional(string)
-      start_addr  = optional(string)
-      })
+    data_ip_range = optional(object({
+      end_addr    = string
+      gateway     = string
+      netmask     = string
+      start_addr  = string
+      }))
+    hxdp_ip_range = optional(object({
+      end_addr    = string
+      gateway     = string
+      netmask     = string
+      start_addr  = string
+      }))
+    hypervisor_control_ip_range = optional(object({
+      end_addr    = string
+      gateway     = string
+      netmask     = string
+      start_addr  = string
+      }))
+    mgmt_ip_range = optional(object({
+      end_addr    = string
+      gateway     = string
+      netmask     = string
+      start_addr  = string
+      }))
   })
 }
 
@@ -161,23 +161,23 @@ variable "cluster_network_policy" {
     name         = string
     description  = optional(string)
     jumbo_frame  = optional(bool)
-    mac_prefix_range = object({
-      end_addr   = optional(string)
-      start_addr = optional(string)
-      })
-    mgmt_vlan = object({
-      name    = optional(string)
-      vlan_id = optional(number)
-      })
-    uplink_speed = optional(string)
-    vm_migration_vlan = object({
-      name    = optional(string)
-      vlan_id = optional(number)
-      })
-    vm_network_vlans = list(object({
-      name    = optional(string)
-      vlan_id = optional(number)
+    mac_prefix_range = optional(object({
+      end_addr   = string
+      start_addr = string
       }))
+    mgmt_vlan = optional(object({
+      name    = string
+      vlan_id = number
+      }))
+    uplink_speed = optional(string)
+    vm_migration_vlan = optional(object({
+      name    = string
+      vlan_id = number
+      }))
+    vm_network_vlans = optional(list(object({
+      name    = string
+      vlan_id = number
+      })))
   })
 }
 
@@ -200,18 +200,18 @@ variable "ext_fc_storage_policy" {
     name         = string
     description = optional(string)
     admin_state = optional(bool)
-    exta_traffic = object({
-      name    = optional(string)
-      vsan_id = optional(number)
-      })
-    extb_traffic = object({
-      name    = optional(string)
-      vsan_id = optional(number)
-      })
-    wwxn_prefix_range = object({
-      end_addr   = optional(string)
-      start_addr = optional(string)
-      })
+    exta_traffic = optional(object({
+      name    = string
+      vsan_id = number
+      }))
+    extb_traffic = optional(object({
+      name    = string
+      vsan_id = number
+      }))
+    wwxn_prefix_range = optional(object({
+      end_addr   = string
+      start_addr = string
+      }))
   })
   default = null
 }
@@ -222,14 +222,14 @@ variable "ext_iscsi_storage_policy" {
     name         = string
     description = optional(string)
     admin_state = optional(bool)
-    exta_traffic = object({
-      name    = optional(string)
-      vlan_id = optional(number)
-      })
-    extb_traffic = object({
-      name    = optional(string)
-      vlan_id = optional(number)
-      })
+    exta_traffic = optional(object({
+      name    = string
+      vlan_id = number
+      }))
+    extb_traffic = optional(object({
+      name    = string
+      vlan_id = number
+      }))
   })
   default = null
 }
@@ -250,12 +250,12 @@ variable "ucsm_config_policy" {
     use_existing  = bool
     name          = string
     description   = optional(string)
-    kvm_ip_range = object({
-      end_addr    = optional(string)
-      gateway     = optional(string)
-      netmask     = optional(string)
-      start_addr  = optional(string)
-      })
+    kvm_ip_range = optional(object({
+      end_addr    = string
+      gateway     = string
+      netmask     = string
+      start_addr  = string
+      }))
     server_firmware_version = optional(string)
   })
   default = null

@@ -88,7 +88,7 @@ provider "intersight" {
 module "hx" {
   source = "./modules/terraform-intersight-hx"
 
-  action              = "Validate"
+  action              = var.action
   wait_for_completion = false
   organization        = var.organization
   tags                = var.tags

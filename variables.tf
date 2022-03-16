@@ -98,18 +98,18 @@ variable "sys_config_policy" {
   # })
 }
 
-variable "vcenter_config_policy" {
-  # type = object({
-  #   use_existing  = bool
-  #   name          = string
-  #   description   = string
-  #   data_center   = string
-  #   hostname      = string
-  #   password      = string
-  #   sso_url       = optional(string)
-  #   username      = string
-  # })
-}
+# variable "vcenter_config_policy" {
+#   # type = object({
+#   #   use_existing  = bool
+#   #   name          = string
+#   #   description   = string
+#   #   data_center   = string
+#   #   hostname      = string
+#   #   password      = string
+#   #   sso_url       = optional(string)
+#   #   username      = string
+#   # })
+# }
 
 # variable "cluster_storage_policy" {
 #   # type = object({

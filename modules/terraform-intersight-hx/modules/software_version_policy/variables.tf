@@ -1,3 +1,14 @@
+variable "tags" {
+  type    = list(map(string))
+  default = []
+}
+
+variable "organization" {
+  type        = string
+  description = "Organization name."
+  default     = "default"
+}
+
 variable "name" {
   type        = string
   description = "Policy name."

@@ -221,6 +221,9 @@ module "software_version_policy" {
   server_firmware_version = var.software_version_policy.server_firmware_version
   hypervisor_version      = var.software_version_policy.hypervisor_version
   hxdp_version            = var.software_version_policy.hxdp_version
+
+  organization  = var.organization
+  tags          = var.tags
 }
 
 module "ucsm_config_policy" {
@@ -258,7 +261,7 @@ module "cluster_profile" {
   host_name_prefix              = var.cluster.host_name_prefix
   storage_data_vlan             = var.cluster.storage_data_vlan
   storage_cluster_auxiliary_ip  = var.cluster.storage_cluster_auxiliary_ip #?
-  storage_type                  = var.cluster.storage_type == null ? "HyperFlexDp" : var.cluster.storage_type  
+  storage_type                  = var.cluster.storage_type == null ? "HyperFlexDp" : var.cluster.storage_type
   wwxn_prefix                   = var.cluster.wwxn_prefix #?
 
   ## IWE HYPERVISOR OPTIONAL ##

@@ -46,16 +46,16 @@ variable "cluster" {
     storage_type                  = optional(string)
     wwxn_prefix                   = optional(string)
     ## IWE ONLY ##
-    storage_client_vlan = object({
+    storage_client_vlan           = optional(object({
       name       = string
       vlan_id    = number
       ip_address = string
       netmask    = string
-      })
+      }))
     cluster_internal_subnet       = optional(object({
-      gateway                     = string
-      ip_address                  = string
-      netmask                     = string
+      gateway    = string
+      ip_address = string
+      netmask    = string
       }))
     })
 }
@@ -161,6 +161,12 @@ variable "cluster_network_policy" {
     name         = string
     description  = optional(string)
     jumbo_frame  = optional(bool)
+    kvm_ip_range = optional(object({
+      end_addr   = string
+      start_addr = string
+      netmask    = string
+      gateway    = string
+      }))
     mac_prefix_range = optional(object({
       end_addr   = string
       start_addr = string

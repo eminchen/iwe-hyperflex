@@ -30,7 +30,7 @@ data "intersight_hyperflex_node_config_policy" "this" {
 }
 
 data "intersight_hyperflex_cluster_network_policy" "this" {
-  count = var.cluster_network_policy != null ? (var.cluster_network_policy.use_existing == true ? 1 : 0) : 0
+  count = var.cluster_network_policy.use_existing == true ? 1 : 0
   name  = var.cluster_network_policy.name
 }
 
@@ -153,12 +153,13 @@ module "node_config_policy" {
 
 module "cluster_network_policy" {
   source      = "./modules/cluster_network_policy"
-  count       = var.cluster_network_policy != null ? (var.cluster_network_policy.use_existing == true ? 0 : 1) : 0
+  count       = var.cluster_network_policy.use_existing == true ? 0 : 1
 
   name                = var.cluster_network_policy.name
   description         = var.cluster_network_policy.description
   jumbo_frame         = var.cluster_network_policy.jumbo_frame
   uplink_speed        = var.cluster_network_policy.uplink_speed
+  kvm_ip_range        = var.cluster_network_policy.kvm_ip_range
   mac_prefix_range    = var.cluster_network_policy.mac_prefix_range
   mgmt_vlan           = var.cluster_network_policy.mgmt_vlan
   vm_migration_vlan   = var.cluster_network_policy.vm_migration_vlan

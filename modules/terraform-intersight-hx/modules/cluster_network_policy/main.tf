@@ -10,6 +10,13 @@ resource "intersight_hyperflex_cluster_network_policy" "this" {
   jumbo_frame = var.jumbo_frame
   uplink_speed = var.uplink_speed
 
+  kvm_ip_range {
+    end_addr   = var.kvm_ip_range.end_addr
+    start_addr = var.kvm_ip_range.start_addr
+    netmask    = var.kvm_ip_range.netmask
+    gateway    = var.kvm_ip_range.gateway
+  }
+
   mac_prefix_range {
     end_addr   = var.mac_prefix_range.end_addr
     start_addr = var.mac_prefix_range.start_addr

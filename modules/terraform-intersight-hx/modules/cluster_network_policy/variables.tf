@@ -25,6 +25,16 @@ variable "jumbo_frame" {
   description = "Enable or disable Jumbo Frames (MTU=9000). Jumbo Frames are used by Storage Network, VM Migration Network."
 }
 
+variable "kvm_ip_range" {
+  type        = object({
+    end_addr   = string
+    start_addr = string
+    netmask    = string
+    gateway    = string
+    })
+  description = "The Out-of-band KVM IP range.Configures the service profiles to use IP addresses within this range for setting the KVM IP of a server."
+}
+
 variable "mac_prefix_range" {
   type        = object({
     end_addr   = string

@@ -24,8 +24,8 @@ resource "intersight_hyperflex_cluster_profile" "this" {
   wwxn_prefix                   = var.wwxn_prefix #?
 
   ## IWE Only ##
-  storage_client_ip_address     = var.storage_client_vlan.ip_address
-  storage_client_netmask        = var.storage_client_vlan.netmask
+  storage_client_ip_address     = try(var.storage_client_vlan.ip_address, null)
+  storage_client_netmask        = try(var.storage_client_vlan.netmask, null)
 
   ## NEEDED? ##
   /*

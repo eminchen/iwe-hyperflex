@@ -98,33 +98,33 @@ variable "sys_config_policy" {
   # })
 }
 
-variable "vcenter_config_policy" {
-  # type = object({
-  #   use_existing  = bool
-  #   name          = string
-  #   description   = string
-  #   data_center   = string
-  #   hostname      = string
-  #   password      = string
-  #   sso_url       = optional(string)
-  #   username      = string
-  # })
-}
+# variable "vcenter_config_policy" {
+#   # type = object({
+#   #   use_existing  = bool
+#   #   name          = string
+#   #   description   = string
+#   #   data_center   = string
+#   #   hostname      = string
+#   #   password      = string
+#   #   sso_url       = optional(string)
+#   #   username      = string
+#   # })
+# }
 
-variable "cluster_storage_policy" {
-  # type = object({
-  #   use_existing            = bool
-  #   name                    = string
-  #   description             = string
-  #   kvm_ip_range            = object({
-  #     end_addr              = string
-  #     gateway               = string
-  #     netmask               = string
-  #     start_addr            = string
-  #     })
-  #   server_firmware_version = string
-  # })
-}
+# variable "cluster_storage_policy" {
+#   # type = object({
+#   #   use_existing            = bool
+#   #   name                    = string
+#   #   description             = string
+#   #   kvm_ip_range            = object({
+#   #     end_addr              = string
+#   #     gateway               = string
+#   #     netmask               = string
+#   #     start_addr            = string
+#   #     })
+#   #   server_firmware_version = string
+#   # })
+# }
 
 variable "auto_support_policy" {
   # type = object({
@@ -196,55 +196,55 @@ variable "cluster_network_policy" {
   # })
 }
 
-variable "proxy_setting_policy" {
-  # type = object({
-  #   use_existing  = bool
-  #   name          = string
-  #   description   = string
-  #   hostname      = string
-  #   password      = string
-  #   port          = number
-  #   username      = string
-  # })
-}
+# variable "proxy_setting_policy" {
+#   # type = object({
+#   #   use_existing  = bool
+#   #   name          = string
+#   #   description   = string
+#   #   hostname      = string
+#   #   password      = string
+#   #   port          = number
+#   #   username      = string
+#   # })
+# }
 
-variable "ext_fc_storage_policy" {
-  # type = object({
-  #   use_existing = bool
-  #   name         = string
-  #   description = string
-  #   admin_state = bool
-  #   exta_traffic = object({
-  #     name    = string
-  #     vsan_id = number
-  #     })
-  #   extb_traffic = object({
-  #     name    = string
-  #     vsan_id = number
-  #     })
-  #   wwxn_prefix_range = object({
-  #     end_addr   = string
-  #     start_addr = string
-  #     })
-  # })
-}
+# variable "ext_fc_storage_policy" {
+#   # type = object({
+#   #   use_existing = bool
+#   #   name         = string
+#   #   description = string
+#   #   admin_state = bool
+#   #   exta_traffic = object({
+#   #     name    = string
+#   #     vsan_id = number
+#   #     })
+#   #   extb_traffic = object({
+#   #     name    = string
+#   #     vsan_id = number
+#   #     })
+#   #   wwxn_prefix_range = object({
+#   #     end_addr   = string
+#   #     start_addr = string
+#   #     })
+#   # })
+# }
 
-variable "ext_iscsi_storage_policy" {
-  # type = object({
-  #   use_existing = bool
-  #   name         = string
-  #   description = string
-  #   admin_state = bool
-  #   exta_traffic = object({
-  #     name    = string
-  #     vlan_id = number
-  #     })
-  #   extb_traffic = object({
-  #     name    = string
-  #     vlan_id = number
-  #     })
-  # })
-}
+# variable "ext_iscsi_storage_policy" {
+#   # type = object({
+#   #   use_existing = bool
+#   #   name         = string
+#   #   description = string
+#   #   admin_state = bool
+#   #   exta_traffic = object({
+#   #     name    = string
+#   #     vlan_id = number
+#   #     })
+#   #   extb_traffic = object({
+#   #     name    = string
+#   #     vlan_id = number
+#   #     })
+#   # })
+# }
 
 variable "software_version_policy" {
   type = object({
@@ -257,17 +257,17 @@ variable "software_version_policy" {
   })
 }
 
-variable "ucsm_config_policy" {
-  # type = object({
-  #   use_existing  = bool
-  #   name          = string
-  #   description   = string
-  #   kvm_ip_range = object({
-  #     end_addr    = string
-  #     gateway     = string
-  #     netmask     = string
-  #     start_addr  = string
-  #     })
-  #   server_firmware_version = string
-  # })
-}
+# variable "ucsm_config_policy" {
+#   # type = object({
+#   #   use_existing  = bool
+#   #   name          = string
+#   #   description   = string
+#   #   kvm_ip_range = object({
+#   #     end_addr    = string
+#   #     gateway     = string
+#   #     netmask     = string
+#   #     start_addr  = string
+#   #     })
+#   #   server_firmware_version = string
+#   # })
+# }

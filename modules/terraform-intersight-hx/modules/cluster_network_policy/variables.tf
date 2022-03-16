@@ -56,8 +56,12 @@ variable "vm_migration_vlan" {
 
 variable "vm_network_vlans" {
   type        = list(object({
-    name    = string
-    vlan_id = number
+    name                  = string
+    vlan_id               = number
+    additional_properties = optional(string)
+    class_id              = optional(string)
+    object_type           = optional(string)
     }))
   description = "List of VM data VLANs for hosted workloads."
+  default = []
 }

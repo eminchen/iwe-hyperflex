@@ -31,6 +31,7 @@ variable "cluster" {
     name                          = string
     description                   = string
     data_ip_address               = string
+    hypervisor_control_ip_address = string
     hypervisor_type               = string ## ESXi, IWE, HyperV
     mac_address_prefix            = string
     mgmt_ip_address               = string
@@ -63,10 +64,10 @@ variable "local_cred_policy" {
   type = object({
     use_existing                = bool
     name                        = string
-    factory_hypervisor_password = bool
-    hxdp_root_pwd               = string
-    hypervisor_admin            = string # admin
-    hypervisor_admin_pwd        = string
+    factory_hypervisor_password = optional(bool)
+    hxdp_root_pwd               = optional(string)
+    hypervisor_admin            = optional(string) # admin
+    hypervisor_admin_pwd        = optional(string)
   })
 }
 
@@ -74,11 +75,11 @@ variable "sys_config_policy" {
   type = object({
     use_existing    = bool
     name            = string
-    description     = string
-    dns_domain_name = string
-    dns_servers     = list(string)
-    ntp_servers     = list(string)
-    timezone        = string
+    description     = optional(string)
+    dns_domain_name = optional(string)
+    dns_servers     = optional(list(string))
+    ntp_servers     = optional(list(string))
+    timezone        = optional(string)
   })
 }
 
@@ -86,70 +87,70 @@ variable "vcenter_config_policy" {
   type = object({
     use_existing  = bool
     name          = string
-    description   = string
-    data_center   = string
-    hostname      = string
-    password      = string
+    description   = optional(string)
+    data_center   = optional(string)
+    hostname      = optional(string)
+    password      = optional(string)
     sso_url       = optional(string)
-    username      = string
+    username      = optional(string)
   })
+  default = null
 }
 
 variable "cluster_storage_policy" {
   type = object({
-    use_existing            = bool
-    name                    = string
-    description             = string
-    kvm_ip_range            = object({
-      end_addr              = string
-      gateway               = string
-      netmask               = string
-      start_addr            = string
+    use_existing                    = bool
+    name                            = string
+    description                     = optional(string)
+    disk_partition_cleanup          = optional(bool)
+    vdi_optimization                = optional(bool)
+    logical_avalability_zone_config = object({
+      auto_config = optional(bool)
       })
-    server_firmware_version = string
   })
+  default = null
 }
 
 variable "auto_support_policy" {
   type = object({
     use_existing              = bool
     name                      = string
-    description               = string
-    admin_state               = bool
-    service_ticket_receipient = string
-
+    description               = optional(string)
+    admin_state               = optional(bool)
+    service_ticket_receipient = optional(string)
   })
+  default = null
 }
 
 variable "node_config_policy" {
   type = object({
-    use_existing = bool
-    name         = string
-    description = string
-    node_name_prefix = string
+    use_existing     = bool
+    name             = string
+    description      = optional(string)
+    node_name_prefix = optional(string)
     data_ip_range = object({
-      end_addr    = string
-      gateway     = string
-      netmask     = string
-      start_addr  = string
+      end_addr    = optional(string)
+      gateway     = optional(string)
+      netmask     = optional(string)
+      start_addr  = optional(string)
       })
     hxdp_ip_range = object({
-      end_addr    = string
-      gateway     = string
-      netmask     = string
-      start_addr  = string
+      end_addr    = optional(string)
+      gateway     = optional(string)
+      netmask     = optional(string)
+      start_addr  = optional(string)
       })
     hypervisor_control_ip_range = object({
-      end_addr    = string
-      gateway     = string
-      netmask     = string
-      start_addr  = string
+      end_addr    = optional(string)
+      gateway     = optional(string)
+      netmask     = optional(string)
+      start_addr  = optional(string)
       })
     mgmt_ip_range = object({
-      end_addr    = string
-      gateway     = string
-      netmask     = string
-      start_addr  = string
+      end_addr    = optional(string)
+      gateway     = optional(string)
+      netmask     = optional(string)
+      start_addr  = optional(string)
       })
   })
 }
@@ -158,24 +159,24 @@ variable "cluster_network_policy" {
   type = object({
     use_existing = bool
     name         = string
-    description  = string
-    jumbo_frame  = bool
+    description  = optional(string)
+    jumbo_frame  = optional(bool)
     mac_prefix_range = object({
-      end_addr   = string
-      start_addr = string
+      end_addr   = optional(string)
+      start_addr = optional(string)
       })
     mgmt_vlan = object({
-      name    = string
-      vlan_id = number
+      name    = optional(string)
+      vlan_id = optional(number)
       })
-    uplink_speed = string
+    uplink_speed = optional(string)
     vm_migration_vlan = object({
-      name    = string
-      vlan_id = number
+      name    = optional(string)
+      vlan_id = optional(number)
       })
     vm_network_vlans = list(object({
-      name    = string
-      vlan_id = number
+      name    = optional(string)
+      vlan_id = optional(number)
       }))
   })
 }
@@ -184,60 +185,63 @@ variable "proxy_setting_policy" {
   type = object({
     use_existing  = bool
     name          = string
-    description   = string
-    hostname      = string
-    password      = string
-    port          = number
-    username      = string
+    description   = optional(string)
+    hostname      = optional(string)
+    password      = optional(string)
+    port          = optional(number)
+    username      = optional(string)
   })
+  default = null
 }
 
 variable "ext_fc_storage_policy" {
   type = object({
     use_existing = bool
     name         = string
-    description = string
-    admin_state = bool
+    description = optional(string)
+    admin_state = optional(bool)
     exta_traffic = object({
-      name    = string
-      vsan_id = number
+      name    = optional(string)
+      vsan_id = optional(number)
       })
     extb_traffic = object({
-      name    = string
-      vsan_id = number
+      name    = optional(string)
+      vsan_id = optional(number)
       })
     wwxn_prefix_range = object({
-      end_addr   = string
-      start_addr = string
+      end_addr   = optional(string)
+      start_addr = optional(string)
       })
   })
+  default = null
 }
 
 variable "ext_iscsi_storage_policy" {
   type = object({
     use_existing = bool
     name         = string
-    description = string
-    admin_state = bool
+    description = optional(string)
+    admin_state = optional(bool)
     exta_traffic = object({
-      name    = string
-      vlan_id = number
+      name    = optional(string)
+      vlan_id = optional(number)
       })
     extb_traffic = object({
-      name    = string
-      vlan_id = number
+      name    = optional(string)
+      vlan_id = optional(number)
       })
   })
+  default = null
 }
 
 variable "software_version_policy" {
   type = object({
     use_existing            = bool
     name                    = string
-    description             = string
-    server_firmware_version = string
-    hypervisor_version      = string
-    hxdp_version            = string
+    description             = optional(string)
+    server_firmware_version = optional(string)
+    hypervisor_version      = optional(string)
+    hxdp_version            = optional(string)
   })
 }
 
@@ -245,13 +249,14 @@ variable "ucsm_config_policy" {
   type = object({
     use_existing  = bool
     name          = string
-    description   = string
+    description   = optional(string)
     kvm_ip_range = object({
-      end_addr    = string
-      gateway     = string
-      netmask     = string
-      start_addr  = string
+      end_addr    = optional(string)
+      gateway     = optional(string)
+      netmask     = optional(string)
+      start_addr  = optional(string)
       })
-    server_firmware_version = string
+    server_firmware_version = optional(string)
   })
+  default = null
 }

@@ -17,7 +17,7 @@ resource "intersight_hyperflex_ext_iscsi_storage_policy" "this" {
 
   extb_traffic {
     name        = var.extb_traffic.name
-    lsan_id     = var.extb_traffic.vlan_id
+    vlan_id     = var.extb_traffic.vlan_id
     # object_type = "replication.NamedVsan"
   }
 

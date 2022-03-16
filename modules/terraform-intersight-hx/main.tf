@@ -30,7 +30,7 @@ data "intersight_hyperflex_node_config_policy" "this" {
 }
 
 data "intersight_hyperflex_cluster_network_policy" "this" {
-  count = var.cluster_network_policy.useExisting == true ? 1 : 0
+  count = var.cluster_network_policy.use_existing == true ? 1 : 0
   name  = var.cluster_network_policy.name
 }
 
@@ -140,7 +140,7 @@ module "node_config_policy" {
   count       = var.node_config_policy.use_existing == true ? 0 : 1
 
   name                        = var.node_config_policy.name
-  description                 = var.node_config_policy.escription
+  description                 = var.node_config_policy.description
   node_name_prefix            = var.node_config_policy.node_name_prefix
   data_ip_range               = var.node_config_policy.data_ip_range
   hxdp_ip_range               = var.node_config_policy.hxdp_ip_range
@@ -155,14 +155,14 @@ module "cluster_network_policy" {
   source      = "./modules/cluster_network_policy"
   count       = var.cluster_network_policy.use_existing == true ? 0 : 1
 
-  name                = var.name
-  description         = var.description
-  jumbo_frame         = var.jumbo_frame
-  uplink_speed        = var.uplink_speed
-  mac_prefix_range    = var.mac_prefix_range
-  mgmt_vlan           = var.mgmt_vlan
-  vm_migration_vlan   = var.vm_migration_vlan
-  vm_network_vlans    = var.vm_network_vlans
+  name                = var.cluster_network_policy.name
+  description         = var.cluster_network_policy.description
+  jumbo_frame         = var.cluster_network_policy.jumbo_frame
+  uplink_speed        = var.cluster_network_policy.uplink_speed
+  mac_prefix_range    = var.cluster_network_policy.mac_prefix_range
+  mgmt_vlan           = var.cluster_network_policy.mgmt_vlan
+  vm_migration_vlan   = var.cluster_network_policy.vm_migration_vlan
+  vm_network_vlans    = var.cluster_network_policy.vm_network_vlans
 
   organization  = var.organization
   tags          = var.tags
@@ -246,31 +246,24 @@ module "cluster_profile" {
   organization        = var.organization
   tags                = var.tags
 
-  name                = var.cluster.name
-  description         = var.cluster.description
-  data_ip_address     = var.cluster.data_ip_address
-  hypervisor_type     = var.cluster.hypervisor_type # ESXi vs IWE
-  mac_address_prefix  = var.cluster.mac_address_prefix
-  mgmt_ip_address     = var.cluster.mgmt_ip_address
-  mgmt_platform       = var.cluster.mgmt_platform  # FI vs EDGE
-  replication         = var.cluster.replication
-  host_name_prefix    = var.cluster.host_name_prefix
-
-  storage_data_vlan       = var.cluster.storage_data_vlan
-
+  name                          = var.cluster.name
+  description                   = var.cluster.description
+  data_ip_address               = var.cluster.data_ip_address
+  hypervisor_control_ip_address = var.cluster.hypervisor_control_ip_address
+  hypervisor_type               = var.cluster.hypervisor_type # ESXi vs IWE
+  mac_address_prefix            = var.cluster.mac_address_prefix
+  mgmt_ip_address               = var.cluster.mgmt_ip_address
+  mgmt_platform                 = var.cluster.mgmt_platform  # FI vs EDGE
+  replication                   = var.cluster.replication
+  host_name_prefix              = var.cluster.host_name_prefix
+  storage_data_vlan             = var.cluster.storage_data_vlan
   storage_cluster_auxiliary_ip  = var.cluster.storage_cluster_auxiliary_ip #?
   storage_type                  = var.cluster.storage_type #?
   wwxn_prefix                   = var.cluster.wwxn_prefix #?
 
   ## IWE HYPERVISOR OPTIONAL ##
-  storage_client_vlan_name      = var.cluster.storage_client_vlan_name
-  storage_client_vlan_id        = var.cluster.storage_client_vlan_id
-  storage_client_ip_address     = var.cluster.storage_client_ip_address
-  storage_client_netmask        = var.cluster.storage_client_netmask
+  storage_client_vlan           = var.cluster.storage_client_vlan
   cluster_internal_subnet       = var.cluster.cluster_internal_subnet
-  # cluster_internal_subnet_gateway     = var.cluster.cluster_internal_subnet.gateway
-  # cluster_internal_subnet_ip_address  = var.cluster.cluster_internal_subnet.ip_address
-  # cluster_internal_subnet_netmask     = var.cluster.cluster_internal_subnet.netmask
 
   ### COMMON REQUIRED POLICIES ###
   local_cred_policy_moid        = var.local_cred_policy.use_existing == true ? data.intersight_hyperflex_local_credential_policy.this.0.results.0.moid : module.local_cred_policy.0.moid
@@ -290,5 +283,6 @@ module "cluster_profile" {
   ext_fc_storage_policy_moid    = var.ext_fc_storage_policy == null ? null : ( var.ext_fc_storage_policy.use_existing == true ? data.intersight_hyperflex_ext_fc_storage_policy.this.0.results.0.moid : module.ext_fc_storage_policy.0.moid )
   ext_iscsi_storage_policy_moid = var.ext_iscsi_storage_policy == null ? null : ( var.ext_iscsi_storage_policy.use_existing == true ? data.intersight_hyperflex_ext_iscsi_storage_policy.this.0.results.0.moid : module.ext_iscsi_storage_policy.0.moid )
   ucsm_config_policy_moid       = var.ucsm_config_policy == null ? null : ( var.ucsm_config_policy.use_existing == true ? data.intersight_hyperflex_ucsm_config_policy.this.0.results.0.moid : module.ucsm_config_policy.0.moid )
+  # Missing FC & iSCSI policies
 
 }

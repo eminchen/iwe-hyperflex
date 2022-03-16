@@ -72,10 +72,11 @@ node_config_policy = {
   name          = "mel-dc4-hx1-node-config-policy"
 }
 
-# cluster_network_policy = {
-#   use_existing  = true
-#   name          = "mel-dc4-iwe-cluster-network-policy"
-# }
+cluster_network_policy = {
+  use_existing  = true
+  # name          = "mel-dc4-iwe-cluster-network-policy"
+  name          = "mel-dc4-hx1-cluster-network-policy"
+}
 
 # proxy_setting_policy = {
 #   use_existing  = true

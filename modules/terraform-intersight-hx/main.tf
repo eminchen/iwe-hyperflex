@@ -10,12 +10,12 @@ data "intersight_hyperflex_sys_config_policy" "this" {
 }
 
 data "intersight_hyperflex_vcenter_config_policy" "this" {
-  count = var.vcenter_config_policy != null ? (var.vcenter_config_policy.use_existing == true && var.cluster.hypervisor_type == "ESXi" ? 0 : 1) : 0
+  count = var.vcenter_config_policy != null ? (var.vcenter_config_policy.use_existing == true && var.cluster.hypervisor_type == "ESXi" ? 1 : 0) : 0
   name  = var.vcenter_config_policy.name
 }
 
 data "intersight_hyperflex_cluster_storage_policy" "this" {
-  count = var.cluster_storage_policy != null ? (var.cluster_storage_policy.use_existing == true && var.cluster.hypervisor_type == "ESXi" ? 0 : 1) : 0
+  count = var.cluster_storage_policy != null ? (var.cluster_storage_policy.use_existing == true && var.cluster.hypervisor_type == "ESXi" ? 1 : 0) : 0
   name  = var.cluster_storage_policy.name
 }
 

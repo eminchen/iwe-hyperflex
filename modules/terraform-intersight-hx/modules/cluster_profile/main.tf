@@ -57,10 +57,6 @@ resource "intersight_hyperflex_cluster_profile" "this" {
     moid = var.cluster_network_policy_moid
   }
 
-  cluster_storage {
-    moid = var.cluster_storage_policy_moid
-  }
-
   dynamic "cluster_storage" {
     for_each = var.cluster_storage_policy_moid == null ? [] : [var.cluster_storage_policy_moid]
     content {

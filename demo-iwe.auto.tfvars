@@ -41,7 +41,18 @@ cluster = {
 
   }
 
-nodes = ["WZP23470VYT", "WZP23470VYJ", "WZP23470VYE"]  ## List of node serial numbers to assign to cluster
+nodes = {
+  WZP23470VYT = {
+    cluster_index = 1
+  }
+  WZP23470VYJ = {
+    cluster_index = 2
+  }
+  WZP23470VYE = {
+    cluster_index = 3
+  }
+}
+
 
 local_cred_policy = {
   use_existing  = true

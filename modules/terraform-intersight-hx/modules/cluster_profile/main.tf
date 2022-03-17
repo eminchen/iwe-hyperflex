@@ -3,24 +3,6 @@ data "intersight_organization_organization" "this" {
   name = var.organization
 }
 
-# Lookup HX Node MOIDs by Serial
-
-data "intersight_hyperflex_node" "nodes" {
-  for_each = toset(var.nodes)
-
-  serial_number = each.value
-}
-
-# data "intersight_compute_physical_summary" "nodes" {
-#   for_each = toset(var.nodes)
-#
-#   serial = each.value
-# }
-
-locals {
-  node_moid_list = [for serial in var.nodes: data.intersight_hyperflex_node.nodes[serial].results[0].moid]
-}
-
 # Creating cluster profile
 resource "intersight_hyperflex_cluster_profile" "this" {
   name                          = var.name

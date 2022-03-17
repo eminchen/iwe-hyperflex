@@ -250,9 +250,6 @@ module "cluster_profile" {
   organization        = var.organization
   tags                = var.tags
 
-  ### NODE LIST ###
-  nodes                         = var.nodes
-
   ### CLUSTER SETTINGS ###
   name                          = var.cluster.name
   description                   = var.cluster.description
@@ -292,5 +289,28 @@ module "cluster_profile" {
   ext_iscsi_storage_policy_moid = var.ext_iscsi_storage_policy == null ? null : ( var.ext_iscsi_storage_policy.use_existing == true ? data.intersight_hyperflex_ext_iscsi_storage_policy.this.0.results.0.moid : module.ext_iscsi_storage_policy.0.moid )
   ucsm_config_policy_moid       = var.ucsm_config_policy == null ? null : ( var.ucsm_config_policy.use_existing == true ? data.intersight_hyperflex_ucsm_config_policy.this.0.results.0.moid : module.ucsm_config_policy.0.moid )
   # Missing FC & iSCSI policies
+
+}
+
+### Node Profiles ###
+
+module "node_profile" {
+  source      = "./modules/node_profile"
+  # count       = var.ucsm_config_policy != null ? (var.ucsm_config_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 0 : 1) : 0
+  for_each = var.nodes
+
+  name                    = format("%s-%d", var.cluster.host_name_prefix, each.value.cluster_index)
+  description             = format("HX Node Profile for %s built by Terraform", each.key)
+  hypervisor_type         = var.cluster.hypervisor_type # ESXi vs IWE
+  cluster_moid            = module.cluster_profile.moid
+  # node_config_policy_moid = var.node_config_policy.use_existing == true ? data.intersight_hyperflex_node_config_policy.this.0.results.0.moid : module.node_config_policy.0.moid
+  serial_number           = each.key
+
+  hxdp_data_ip            = try(each.value.hxdp_data_ip, null)
+  hxdp_mgmt_ip            = try(each.value.hxdp_mgmt_ip, null)
+  hxdp_storage_client_ip  = try(each.value.hxdp_storage_client_ip, null)
+  hypervisor_control_ip   = try(each.value.hypervisor_control_ip, null)
+  hypervisor_data_ip      = try(each.value.hypervisor_data_ip, null)
+  hypervisor_mgmt_ip      = try(each.value.hypervisor_mgmt_ip, null)
 
 }

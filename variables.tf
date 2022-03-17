@@ -42,6 +42,8 @@ variable "organization" {
   default     = "default"
 }
 
+variable "nodes" {}
+
 variable "cluster" {
   # type = object({
   #   name                          = string
@@ -75,8 +77,6 @@ variable "cluster" {
   #     }))
   #   })
 }
-
-variable "nodes" {}
 
 variable "local_cred_policy" {
   # type = object({

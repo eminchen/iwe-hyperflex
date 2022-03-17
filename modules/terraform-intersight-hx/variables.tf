@@ -61,6 +61,10 @@ variable "cluster" {
     })
 }
 
+variable "nodes" {
+  type = list(string)
+}
+
 variable "local_cred_policy" {
   type = object({
     use_existing                = bool

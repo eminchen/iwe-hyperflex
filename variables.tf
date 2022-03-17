@@ -76,6 +76,8 @@ variable "cluster" {
   #   })
 }
 
+variable "nodes" {}
+
 variable "local_cred_policy" {
   # type = object({
   #   use_existing                = bool

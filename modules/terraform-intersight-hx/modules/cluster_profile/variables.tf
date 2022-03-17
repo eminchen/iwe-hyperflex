@@ -28,6 +28,12 @@ variable "organization" {
   default     = "default"
 }
 
+variable "nodes" {
+  type = list(string)
+  description = "List of HX server (node) serial numbers to assign to cluster."
+  default = []
+}
+
 variable "name" {
   type        = string
   description = "HyperFlex cluster profile name."

@@ -41,6 +41,8 @@ cluster = {
 
   }
 
+nodes = ["WZP23470VYT", "WZP23470VYJ", "WZP23470VYE"]  ## List of node serial numbers to assign to cluster
+
 local_cred_policy = {
   use_existing  = true
   name          = "mel-dc4-hx1-local-credential-policy"

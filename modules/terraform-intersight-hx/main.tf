@@ -250,6 +250,10 @@ module "cluster_profile" {
   organization        = var.organization
   tags                = var.tags
 
+  ### NODE LIST ###
+  nodes                         = var.nodes
+
+  ### CLUSTER SETTINGS ###
   name                          = var.cluster.name
   description                   = var.cluster.description
   data_ip_address               = var.cluster.data_ip_address

@@ -11,6 +11,12 @@ data "intersight_hyperflex_node" "nodes" {
   serial_number = each.value
 }
 
+data "intersight_compute_physical_summary" "nodes" {
+  for_each = toset(var.nodes)
+
+  serial = each.value
+}
+
 # Creating cluster profile
 resource "intersight_hyperflex_cluster_profile" "this" {
   name                          = var.name

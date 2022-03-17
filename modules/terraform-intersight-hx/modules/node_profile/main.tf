@@ -35,7 +35,7 @@ resource "intersight_hyperflex_node_profile" "this" {
 
   assigned_server {
     moid = data.intersight_compute_physical_summary.this.results[0].moid
-    # object_type = "compute.RackUnit"
+    object_type = "compute.RackUnit"
   }
 
   cluster_profile {

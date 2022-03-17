@@ -302,7 +302,7 @@ module "node_profile" {
   name                    = format("%s-%d", var.cluster.host_name_prefix, each.value.cluster_index)
   description             = format("HX Node Profile for %s built by Terraform", each.key)
   hypervisor_type         = var.cluster.hypervisor_type # ESXi vs IWE
-  cluster_moid            = module.cluster_profile.0.moid
+  cluster_moid            = module.cluster_profile.moid
   # node_config_policy_moid = var.node_config_policy.use_existing == true ? data.intersight_hyperflex_node_config_policy.this.0.results.0.moid : module.node_config_policy.0.moid
   serial_number           = each.key
 

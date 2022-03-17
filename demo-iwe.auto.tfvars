@@ -1,4 +1,4 @@
-action              = "No-op"
+action              = "Deploy" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op
 wait_for_completion = false
 organization        = "default"
 tags                = []

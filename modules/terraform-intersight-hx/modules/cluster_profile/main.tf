@@ -153,11 +153,11 @@ resource "intersight_hyperflex_cluster_profile" "this" {
   }
 
 
-  lifecycle {
-    ignore_changes = [
-      # Ignore changes to Action as Intersight will reset these to "No-op" once applied
-      action
-    ]
-  }
+  # lifecycle {
+  #   ignore_changes = [
+  #     # Ignore changes to Action as Intersight will reset these to "No-op" once applied
+  #     action
+  #   ]
+  # }
 
 }

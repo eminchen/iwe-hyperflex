@@ -17,10 +17,10 @@ resource "intersight_hyperflex_cluster_network_policy" "this" {
     gateway    = var.kvm_ip_range.gateway
   }
 
-  mac_prefix_range {
-    end_addr   = var.mac_prefix_range.end_addr
-    start_addr = var.mac_prefix_range.start_addr
-  }
+  # mac_prefix_range {
+  #   end_addr   = var.mac_prefix_range.end_addr
+  #   start_addr = var.mac_prefix_range.start_addr
+  # }
 
   mgmt_vlan {
     name    = var.mgmt_vlan.name

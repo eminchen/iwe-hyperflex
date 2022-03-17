@@ -1,20 +1,20 @@
-action              = "Deploy" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op
+action              = "No-op" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op
 wait_for_completion = false
 organization        = "default"
 tags                = []
 
 cluster = {
   ### COMMON SETTINGS ###
-  name                          = "tf-hx-iwe"
+  name                          = "TF-HX-IWE"
   description                   = "HX Cluster deployed by Terrafrom"
   data_ip_address               = "169.254.0.1" # 169.254.0.1
   hypervisor_control_ip_address = "172.31.255.2"
   hypervisor_type               = "IWE" # ESXi, IWE
   mac_address_prefix            = "00:25:B5:00"
-  mgmt_ip_address               = "10.67.29.138"
+  mgmt_ip_address               = "10.67.53.226"
   mgmt_platform                 = "FI" # FI, EDGE
   replication                   = 3
-  host_name_prefix              = "tf-hx-iwe"
+  host_name_prefix              = "TF-HX-IWE"
 
   storage_data_vlan = {
     name    = "HX-STR-DATA-103"
@@ -85,9 +85,33 @@ node_config_policy = {
 }
 
 cluster_network_policy = {
-  use_existing  = true
+  use_existing  = false
   # name          = "mel-dc4-iwe-cluster-network-policy"
-  name          = "mel-dc4-hx1-cluster-network-policy"
+  # name          = "mel-dc4-hx1-cluster-network-policy"
+  name                = "tf-hx-iwe-cluster-network-policy"
+  description         = "HX IWE Cluster Network Policy built from Terraform"
+  jumbo_frame         = true
+  uplink_speed        = "default"
+  kvm_ip_range        = {
+    start_addr  = "10.67.29.115"
+    end_addr    = "10.67.29.118"
+    netmask     = "255.255.255.0"
+    gateway     = "10.67.29.1"
+  }
+  mgmt_vlan           = {
+    name    = "IWE-MGMT-107"
+    vlan_id = 107
+  }
+  vm_migration_vlan   = {
+    name    = "IWE-HYPER-NET-105"
+    vlan_id = 105
+  }
+  vm_network_vlans    = [
+    {
+      name    = "IWE-VM-NET-106"
+      vlan_id = 106
+    }
+  ]
 }
 
 # proxy_setting_policy = {

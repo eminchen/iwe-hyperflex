@@ -35,13 +35,13 @@ variable "kvm_ip_range" {
   description = "The Out-of-band KVM IP range.Configures the service profiles to use IP addresses within this range for setting the KVM IP of a server."
 }
 
-variable "mac_prefix_range" {
-  type        = object({
-    end_addr   = string
-    start_addr = string
-    })
-  description = "The MAC address prefix range for configuring vNICs.Configures the service profiles to use MAC address prefixes within this range for setting the MAC address of server vNICs."
-}
+# variable "mac_prefix_range" {
+#   type        = object({
+#     end_addr   = string
+#     start_addr = string
+#     })
+#   description = "The MAC address prefix range for configuring vNICs.Configures the service profiles to use MAC address prefixes within this range for setting the MAC address of server vNICs."
+# }
 
 variable "mgmt_vlan" {
   type        = object({

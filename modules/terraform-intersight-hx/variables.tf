@@ -181,10 +181,10 @@ variable "cluster_network_policy" {
       netmask    = string
       gateway    = string
       }))
-    mac_prefix_range = optional(object({
-      end_addr   = string
-      start_addr = string
-      }))
+    # mac_prefix_range = optional(object({
+    #   end_addr   = string
+    #   start_addr = string
+    #   }))
     mgmt_vlan = optional(object({
       name    = string
       vlan_id = number

@@ -160,7 +160,7 @@ module "cluster_network_policy" {
   jumbo_frame         = var.cluster_network_policy.jumbo_frame
   uplink_speed        = var.cluster_network_policy.uplink_speed
   kvm_ip_range        = var.cluster_network_policy.kvm_ip_range
-  mac_prefix_range    = var.cluster_network_policy.mac_prefix_range
+  # mac_prefix_range    = var.cluster_network_policy.mac_prefix_range
   mgmt_vlan           = var.cluster_network_policy.mgmt_vlan
   vm_migration_vlan   = var.cluster_network_policy.vm_migration_vlan
   vm_network_vlans    = var.cluster_network_policy.vm_network_vlans

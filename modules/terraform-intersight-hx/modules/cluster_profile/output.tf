@@ -3,5 +3,6 @@ output "moid" {
 }
 
 output "nodes" {
-  value = data.intersight_compute_physical_summary.nodes
+  # value = data.intersight_hyperflex_node.nodes
+  value = local.node_moid_list
 }

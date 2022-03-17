@@ -11,10 +11,16 @@ data "intersight_hyperflex_node" "nodes" {
   serial_number = each.value
 }
 
-data "intersight_compute_physical_summary" "nodes" {
-  for_each = toset(var.nodes)
+# data "intersight_compute_physical_summary" "nodes" {
+#   for_each = toset(var.nodes)
+#
+#   serial = each.value
+# }
 
-  serial = each.value
+locals {
+  node_moid_list = [
+    for serial in var.nodes: data.intersight_hyperflex_node.nodes[serial].moid
+  ]
 }
 
 # Creating cluster profile
@@ -48,6 +54,15 @@ resource "intersight_hyperflex_cluster_profile" "this" {
   policy_bucket??
   src_template??
   */
+
+  # node_profile_config = []
+
+  # dynamic "node_profile_config" {
+  #   for_each = var.nodes
+  #   content {
+  #     moid = data.intersight_hyperflex_node.nodes[node_profile_config.value].moid
+  #   }
+  # }
 
   dynamic "auto_support" {
     for_each = var.auto_support_policy_moid == null ? [] : [var.auto_support_policy_moid]

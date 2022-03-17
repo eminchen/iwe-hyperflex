@@ -18,7 +18,7 @@ data "intersight_hyperflex_node" "nodes" {
 # }
 
 locals {
-  node_moid_list = [for serial in var.nodes: data.intersight_hyperflex_node.nodes[serial].moid]
+  node_moid_list = [for serial in var.nodes: data.intersight_hyperflex_node.nodes["$(serial)"].moid]
 }
 
 # Creating cluster profile

@@ -141,7 +141,7 @@ module "node_config_policy" {
 
   name                        = var.node_config_policy.name
   description                 = var.node_config_policy.description
-  node_name_prefix            = var.node_config_policy.node_name_prefix
+  # node_name_prefix            = var.node_config_policy.node_name_prefix
   data_ip_range               = var.node_config_policy.data_ip_range
   hxdp_ip_range               = var.node_config_policy.hxdp_ip_range
   hypervisor_control_ip_range = var.node_config_policy.hypervisor_control_ip_range

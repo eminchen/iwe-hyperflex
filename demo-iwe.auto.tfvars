@@ -80,8 +80,34 @@ auto_support_policy = {
 }
 
 node_config_policy = {
-  use_existing  = true
-  name          = "mel-dc4-hx1-node-config-policy"
+  use_existing      = false
+  name              = "tf-hx-iwe-cluster-node-config-policy"
+  description       = "HX IWE Cluster Network Policy built from Terraform"
+  # node_name_prefix  = optional(string)
+  # data_ip_range = {
+  #   end_addr    = string
+  #   gateway     = string
+  #   netmask     = string
+  #   start_addr  = string
+  #   }
+  hxdp_ip_range = {
+    end_addr    = "10.67.53.234"
+    gateway     = "10.67.53.225"
+    netmask     = "255.255.255.224"
+    start_addr  = "10.67.53.231"
+    }
+  hypervisor_control_ip_range = optional(object({
+    end_addr    = "172.31.255.255"
+    gateway     = "172.31.255.1"
+    netmask     = "255.255.255.0"
+    start_addr  = "172.31.255.10"
+    }))
+  mgmt_ip_range = {
+    end_addr    = "10.67.53.230"
+    gateway     = "10.67.53.225"
+    netmask     = "255.255.255.224"
+    start_addr  = "10.67.53.227"
+  }
 }
 
 cluster_network_policy = {

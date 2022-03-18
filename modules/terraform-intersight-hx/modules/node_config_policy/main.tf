@@ -7,7 +7,7 @@ resource "intersight_hyperflex_node_config_policy" "this" {
   name                    = var.name
   description             = var.description
 
-  node_name_prefix = var.node_name_prefix
+  # node_name_prefix = var.node_name_prefix
 
   data_ip_range {
     # The range of storage data IPs to be assigned to the nodes.

@@ -141,7 +141,7 @@ variable "node_config_policy" {
     use_existing     = bool
     name             = string
     description      = optional(string)
-    node_name_prefix = optional(string)
+    # node_name_prefix = optional(string)
     data_ip_range = optional(object({
       end_addr    = string
       gateway     = string

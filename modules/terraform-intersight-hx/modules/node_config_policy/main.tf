@@ -9,12 +9,15 @@ resource "intersight_hyperflex_node_config_policy" "this" {
 
   # node_name_prefix = var.node_name_prefix
 
-  data_ip_range {
-    # The range of storage data IPs to be assigned to the nodes.
-    end_addr = var.data_ip_range.end_addr
-    gateway = var.data_ip_range.gateway
-    netmask = var.data_ip_range.netmask
-    start_addr = var.data_ip_range.start_addr
+  dynamic "data_ip_range" {
+    # OPTIONAL - The range of storage data IPs to be assigned to the nodes.
+    for_each = var.data_ip_range == null ? [] : [var.data_ip_range]
+    content {
+      end_addr    = data_ip_range.value.end_addr
+      gateway     = data_ip_range.value.gateway
+      netmask     = data_ip_range.value.netmask
+      start_addr  = data_ip_range.value.start_addr
+    }
   }
 
   hxdp_ip_range {

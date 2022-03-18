@@ -14,7 +14,7 @@ cluster = {
   mgmt_ip_address               = "10.67.53.226"
   mgmt_platform                 = "FI" # FI, EDGE
   replication                   = 3
-  host_name_prefix              = "TF-HX-IWE"
+  host_name_prefix              = "tf-hx-iwe" # Must be lowercase
 
   storage_data_vlan = {
     name    = "HX-STR-DATA-103"

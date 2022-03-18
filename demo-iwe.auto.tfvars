@@ -1,10 +1,11 @@
+### COMMON SETTINGS ###
 action              = "No-op" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op
 wait_for_completion = false
 organization        = "default"
 tags                = []
 
+### HYPERFLEX CLUSTER SETTINGS ###
 cluster = {
-  ### COMMON SETTINGS ###
   name                          = "TF-HX-IWE"
   description                   = "HX Cluster deployed by Terrafrom"
   data_ip_address               = "169.254.0.1" # 169.254.0.1
@@ -15,15 +16,14 @@ cluster = {
   mgmt_platform                 = "FI" # FI, EDGE
   replication                   = 3
   host_name_prefix              = "tf-hx-iwe" # Must be lowercase
+  # storage_cluster_auxiliary_ip  = ""
+  # storage_type                  = "HyperFlexDp" # HyperFlexDp, ThirdParty
+  # wwxn_prefix                   = ""
 
   storage_data_vlan = {
     name    = "HX-STR-DATA-103"
     vlan_id = 103
     }
-
-  # storage_cluster_auxiliary_ip  = ""
-  # storage_type                  = "" # HyperFlexDp, ThirdParty
-  # wwxn_prefix                   = ""
 
   # ### IWE HYPERVISOR ONLY ###
   storage_client_vlan = {
@@ -41,9 +41,19 @@ cluster = {
 
   }
 
+### ASSIGNED NODES (SERVERS) ###
 nodes = {
   WZP23470VYT = {
-    cluster_index = 1
+    cluster_index           = 1
+    ## NOTE: Intersight will dynamically allocate IPs from pools defined in node config policy if not set explicitly ##
+    # hxdp_data_ip            = ""
+    # hxdp_mgmt_ip            = ""
+    # hypervisor_data_ip      = ""
+    # hypervisor_mgmt_ip      = ""
+    # ## IWE ONLY
+    # hxdp_storage_client_ip  = ""
+    # hypervisor_control_ip   = ""
+
   }
   WZP23470VYJ = {
     cluster_index = 2
@@ -53,6 +63,7 @@ nodes = {
   }
 }
 
+### ASSOCIATED POLICIES ###
 
 local_cred_policy = {
   use_existing  = true
@@ -83,37 +94,40 @@ node_config_policy = {
   use_existing      = false
   name              = "tf-hx-iwe-cluster-node-config-policy"
   description       = "HX IWE Cluster Network Policy built from Terraform"
-  # node_name_prefix  = optional(string)
+  ### HYPERFLEX STORAGE DATA NETWORK IPs ###
+  # NOTE: Intersight will automatically allocate 169.254.0.0/24 for this network
   # data_ip_range = {
-  #   end_addr    = string
-  #   gateway     = string
-  #   netmask     = string
-  #   start_addr  = string
+  #   start_addr  = ""
+  #   end_addr    = ""
+  #   gateway     = ""
+  #   netmask     = ""
   #   }
-  hxdp_ip_range = {
-    end_addr    = "10.67.53.234"
-    gateway     = "10.67.53.225"
-    netmask     = "255.255.255.224"
-    start_addr  = "10.67.53.231"
-    }
-  hypervisor_control_ip_range = {
-    end_addr    = "172.31.255.255"
-    gateway     = "172.31.255.1"
-    netmask     = "255.255.255.0"
-    start_addr  = "172.31.255.10"
-    }
+  ### HYPERVISOR MANAGMENT IPs ###
   mgmt_ip_range = {
+    start_addr  = "10.67.53.227"
     end_addr    = "10.67.53.230"
     gateway     = "10.67.53.225"
     netmask     = "255.255.255.224"
-    start_addr  = "10.67.53.227"
   }
+  ### HYPERFLEX STORAGE CONTROLLER MANAGMENT IPs ###
+  hxdp_ip_range = {
+    start_addr  = "10.67.53.231"
+    end_addr    = "10.67.53.234"
+    gateway     = "10.67.53.225"
+    netmask     = "255.255.255.224"
+    }
+  ### (IWE ONLY) HYPERVISOR CLUSTER CONTROL NETWORK IPs ###
+  hypervisor_control_ip_range = {
+    start_addr  = "172.31.255.10"
+    end_addr    = "172.31.255.255"
+    gateway     = "172.31.255.1"
+    netmask     = "255.255.255.0"
+    }
+
 }
 
 cluster_network_policy = {
-  use_existing  = false
-  # name          = "mel-dc4-iwe-cluster-network-policy"
-  # name          = "mel-dc4-hx1-cluster-network-policy"
+  use_existing        = false
   name                = "tf-hx-iwe-cluster-network-policy"
   description         = "HX IWE Cluster Network Policy built from Terraform"
   jumbo_frame         = true
@@ -137,6 +151,14 @@ cluster_network_policy = {
       name    = "IWE-VM-NET-106"
       vlan_id = 106
     }
+    {
+      name    = "LAB-28"
+      vlan_id = 28
+    }
+    # {
+    #   name    = "LAB-29"
+    #   vlan_id = 29
+    # }
   ]
 }
 
@@ -158,7 +180,6 @@ cluster_network_policy = {
 software_version_policy = {
   use_existing            = false
   name                    = "tf-iwe-sw-version"
-
   description             = "HX IWE cluster software version policy created by Terraform"
   server_firmware_version = "4.2(1i)"
   hypervisor_version      = "1.2(1a)"

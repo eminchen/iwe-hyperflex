@@ -96,12 +96,12 @@ node_config_policy = {
     netmask     = "255.255.255.224"
     start_addr  = "10.67.53.231"
     }
-  hypervisor_control_ip_range = optional(object({
+  hypervisor_control_ip_range = {
     end_addr    = "172.31.255.255"
     gateway     = "172.31.255.1"
     netmask     = "255.255.255.0"
     start_addr  = "172.31.255.10"
-    }))
+    }
   mgmt_ip_range = {
     end_addr    = "10.67.53.230"
     gateway     = "10.67.53.225"

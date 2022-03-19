@@ -193,5 +193,8 @@ additional_vm_network_vlans = [
   {
     name    = "LAB-29"
     vlan_id = 29
+    vswitch = "vm"
+    mtu = 1500
+    network_type = "L2"
   }
 ]

@@ -147,7 +147,7 @@ cluster_network_policy = {
     vlan_id = 105
   }
   ### NOTE: Cluster Network Policy is locked after deployment.  These VM Network VLANs are provisioned during initial deployment.
-  ### For Day 2 VLAN changes see Additional_VM_Network_VLANs
+  ### For Day 2 VLAN changes see "additional_vm_network_vlans"
 
   vm_network_vlans    = [
     {

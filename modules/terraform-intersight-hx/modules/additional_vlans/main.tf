@@ -32,5 +32,6 @@ resource "intersight_virtualization_virtual_network" "this" {
 
   cluster {
     moid = var.cluster_moid
+    object_type = "Cluster"
   }
 }

@@ -53,7 +53,7 @@ resource "intersight_virtualization_virtual_network" "this" {
   }
 
   registered_device {
-    moid = "623423ae6f72612d31494286",
+    moid = "623423ae6f72612d31494286"
     #         "ObjectType": "asset.DeviceRegistration"
   }
 

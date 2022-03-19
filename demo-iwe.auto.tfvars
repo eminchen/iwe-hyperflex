@@ -199,7 +199,7 @@ software_version_policy = {
 
 additional_vm_network_vlans = [
   {
-    name = "LAB-29"
+    name    = "LAB-29"
     vlan_id = 29
   }
 ]

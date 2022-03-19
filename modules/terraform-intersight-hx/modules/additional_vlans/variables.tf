@@ -19,6 +19,11 @@ variable "cluster_moid" {
   description = "MOID of the target HyperFlex cluster the virtual network will be assigned to."
 }
 
+variable "cluster_name" {
+  type        = string
+  description = "The name of this HyperFlex cluster."
+}
+
 variable "description" {
   type        = string
   description = "Human readable description about this network."

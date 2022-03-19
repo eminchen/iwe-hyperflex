@@ -331,6 +331,7 @@ module "additional_vlans" {
 
   name                    = each.value.name
   cluster_moid            = module.cluster_profile.moid
+  cluster_name            = var.cluster.name 
   description             = each.value.description # default
   infra_network           = each.value.infra_network # default
   mtu                     = each.value.mtu # default

@@ -154,14 +154,6 @@ cluster_network_policy = {
       name    = "IWE-VM-NET-106"
       vlan_id = 106
     }
-    # {
-    #   name    = "LAB-28"
-    #   vlan_id = 28
-    # }
-    # {
-    #   name    = "LAB-29"
-    #   vlan_id = 29
-    # }
   ]
 }
 

@@ -1,7 +1,29 @@
+# {
+#     "RegisteredDevice": {
+#         "Moid": "623423ae6f72612d31494286",
+#         "ObjectType": "asset.DeviceRegistration"
+#     },
+#     "Name": "test-108",
+#     "Description": "Test",
+#     "Mtu": 1500,
+#     "Vswitch": "vm",
+#     "NetworkType": "L2",
+#     "Vlan": 108
+# }
+
 # # Looking up Organization MOID
 # data "intersight_organization_organization" "this" {
 #   name = var.organization
 # }
+
+# data "intersight_asset_device_registration" "this" {
+#   ## Find assetDeviceRegistration for IWE cluster
+# }
+
+data "intersight_virtualization_iwe_cluster" "this" {
+  ## Cluster Details - NOT Profile Details
+  cluster_name = var.cluster_name
+}
 
 resource "intersight_virtualization_virtual_network" "this" {
   name                    = var.name
@@ -30,8 +52,11 @@ resource "intersight_virtualization_virtual_network" "this" {
     }
   }
 
+  # registered_device {
+  #   moid = var.registered_device_moid
+  # }
+
   cluster {
-    moid = var.cluster_moid
-    object_type = "Cluster"
+    moid = data.intersight_virtualization_iwe_cluster.this.moid
   }
 }

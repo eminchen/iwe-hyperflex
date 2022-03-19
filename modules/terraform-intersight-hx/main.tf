@@ -321,7 +321,7 @@ module "node_profile" {
 locals {
   vlan_map = {
     for val in var.additional_vm_network_vlans :
-      lower(format("%s-%d", try(val.vswitch, "vm"), val.vlan_id)) => val
+      lower(format("%s-%d", defaults(val.vswitch, "vm"), val.vlan_id)) => val
   }
 }
 
@@ -333,7 +333,7 @@ module "additional_vlans" {
   cluster_moid            = module.cluster_profile.moid
   description             = each.value.description # default
   infra_network           = each.value.infra_network # default
-  mtu                     = each.value.mtu
+  mtu                     = each.value.mtu # default
   network_type            = each.value.network_type # default
   trunk                   = each.value.trunk # default
   vlan                    = each.value.vlan_id # assumes VLAN ID used for map key

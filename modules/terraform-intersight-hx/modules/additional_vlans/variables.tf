@@ -54,7 +54,7 @@ variable "trunk" {
   default     = []
 }
 
-variable "vlan" {
+variable "vlan_id" {
   type        = number
   description = "A VLAN id set on the network attachment point."
 }

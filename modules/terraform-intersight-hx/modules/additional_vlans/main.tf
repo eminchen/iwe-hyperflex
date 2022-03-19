@@ -16,9 +16,10 @@
 #   name = var.organization
 # }
 
-# data "intersight_asset_device_registration" "this" {
-#   ## Find assetDeviceRegistration for IWE cluster
-# }
+data "intersight_asset_device_registration" "this" {
+  ## Find assetDeviceRegistration for IWE cluster
+  platform_type = "IWE"
+}
 
 data "intersight_virtualization_iwe_cluster" "this" {
   ## Cluster Details - NOT Profile Details
@@ -29,10 +30,10 @@ resource "intersight_virtualization_virtual_network" "this" {
   name                    = var.name
   description             = var.description # default
   infra_network           = var.infra_network # default
-  mtu                     = 1500 #var.mtu # default
+  mtu                     = var.mtu #var.mtu # default
   network_type            = var.network_type # default
   trunk                   = var.trunk # default
-  vlan                    = var.vlan
+  vlan                    = var.vlan_id
   vswitch                 = var.vswitch # default
   wait_for_completion     = var.wait_for_completion # default
 
@@ -54,7 +55,7 @@ resource "intersight_virtualization_virtual_network" "this" {
 
   registered_device {
     moid = "623423ae6f72612d31494286"
-    #         "ObjectType": "asset.DeviceRegistration"
+    object_type = "asset.DeviceRegistration"
   }
 
   # cluster {

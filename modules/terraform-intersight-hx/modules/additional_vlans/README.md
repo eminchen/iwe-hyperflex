@@ -53,7 +53,7 @@ No modules.
 | <a name="input_infra_network"></a> [infra\_network](#input\_infra\_network) | A flag to distinguish if a network belongs to an infrastructure network or a user defined network that guest workloads can use. | `bool` | `false` | no |
 | <a name="input_network_type"></a> [network\_type](#input\_network\_type) | Type of network layer, either L2 or L3.* unknown - This network is of an unknown network type.* L2 - A Layer 2 switching network type. | `string` | `"L2"` | no |
 | <a name="input_trunk"></a> [trunk](#input\_trunk) |  | `list(string)` | `[]` | no |
-| <a name="input_vlan"></a> [vlan](#input\_vlan) | A VLAN id set on the network attachment point. | `number` | `` | yes |
+| <a name="input_vlan_id"></a> [vlan](#input\_vlan\_id) | A VLAN id set on the network attachment point. | `number` | `` | yes |
 | <a name="input_vswitch"></a> [vswitch](#input\_vswitch) | Name of the virtual switch. | `string` | `"vm"` | no |
 | <a name="input_wait_for_completion"></a> [wait\_for\_completion](#input\_wait\_for\_completion) | This model object can trigger workflows. Use this option to wait for all running workflows to reach a complete state. Default value is True i.e. wait. | `bool` | `true` | yes |
 

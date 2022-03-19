@@ -337,7 +337,7 @@ module "additional_vlans" {
   mtu                     = try(each.value.mtu, null) # default
   network_type            = try(each.value.network_type, null) # default
   trunk                   = try(each.value.trunk, null) # default
-  vlan                    = try(each.value.vlan_id, null) # might be null if trunk used?
+  vlan_id                 = try(each.value.vlan_id, null) # might be null if trunk used?
   vswitch                 = try(each.value.vswitch, null) # default
   wait_for_completion     = var.wait_for_completion # Need?
   tags                    = var.tags

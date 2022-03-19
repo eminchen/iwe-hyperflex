@@ -101,7 +101,7 @@ data "intersight_virtualization_iwe_cluster" "this" {
 }
 
 resource "intersight_virtualization_virtual_network" "this" {
-  name                    = var.name
+  name                    = lower(var.name)
   description             = var.description # default
   infra_network           = var.infra_network # default
   mtu                     = var.mtu #var.mtu # default

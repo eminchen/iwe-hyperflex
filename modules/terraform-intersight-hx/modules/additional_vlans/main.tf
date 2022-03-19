@@ -29,7 +29,7 @@ resource "intersight_virtualization_virtual_network" "this" {
   name                    = var.name
   description             = var.description # default
   infra_network           = var.infra_network # default
-  mtu                     = var.mtu # default
+  mtu                     = 1500 #var.mtu # default
   network_type            = var.network_type # default
   trunk                   = var.trunk # default
   vlan                    = var.vlan

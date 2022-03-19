@@ -50,7 +50,7 @@ No modules.
 | <a name="input_name"></a> [name](#input\_name) | Policy name. | `string` | `""` | yes |
 | <a name="input_description"></a> [description](#input\_description) | Policy description. | `string` | `""` | no |
 | <a name="input_admin_state"></a> [admin\_state](#input\_admin\_state) | Enable or disable Auto-Support. | `bool` | `""` | yes |
-| <a name="input_service_ticket_receipient"></a> [service\_ticket\_receipient](#input\_servic\_ticket\_receipient) | The recipient email address for support tickets. | `string` | `""` | yes |
+| <a name="input_service_ticket_receipient"></a> [service\_ticket\_receipient](#input\_service\_ticket\_receipient) | The recipient email address for support tickets. | `string` | `""` | yes |
 
 ## Outputs
 

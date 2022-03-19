@@ -314,3 +314,30 @@ module "node_profile" {
   hypervisor_mgmt_ip      = try(each.value.hypervisor_mgmt_ip, null)
 
 }
+
+
+### Additional (Day 2) VM Network VLANs ###
+
+locals {
+  vlan_map = {
+    for vlan in var.additional_vm_network_vlans :
+      lower(format("%s-%s", try(vlan.vswitch, "vm"), vlan.vlan_id)) => vlan
+  }
+}
+
+module "additional_vlans" {
+  source      = "./modules/additional_vlans"
+  for_each    = local.vlan_map
+
+  name                    = each.value.name
+  cluster_moid            = module.cluster_profile.moid
+  description             = each.value.description # default
+  infra_network           = each.value.infra_network # default
+  mtu                     = each.value.mtu
+  network_type            = each.value.network_type # default
+  trunk                   = each.value.trunk # default
+  vlan                    = each.value.vlan_id # assumes VLAN ID used for map key
+  vswitch                 = each.value.vswitch # default
+  wait_for_completion     = var.wait_for_completion # Need?
+  tags                    = var.tags
+}

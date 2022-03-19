@@ -146,15 +146,18 @@ cluster_network_policy = {
     name    = "IWE-HYPER-NET-105"
     vlan_id = 105
   }
+  ### NOTE: Cluster Network Policy is locked after deployment.  These VM Network VLANs are provisioned during initial deployment.
+  ### For Day 2 VLAN changes see Additional_VM_Network_VLANs
+
   vm_network_vlans    = [
     {
       name    = "IWE-VM-NET-106"
       vlan_id = 106
-    },
-    {
-      name    = "LAB-28"
-      vlan_id = 28
     }
+    # {
+    #   name    = "LAB-28"
+    #   vlan_id = 28
+    # }
     # {
     #   name    = "LAB-29"
     #   vlan_id = 29
@@ -190,3 +193,13 @@ software_version_policy = {
 #   use_existing = true
 #   name = ""
 # }
+
+### Additional (Day 2) VM Network VLANs ###
+## NOTE: Key can be anything - not used
+
+additional_vm_network_vlans = [
+  {
+    name = "LAB-29"
+    vlan_id = 29
+  }
+]

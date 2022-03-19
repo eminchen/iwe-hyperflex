@@ -280,3 +280,16 @@ variable "ucsm_config_policy" {
   })
   default = null
 }
+
+variable "additional_vm_network_vlans" {
+  type = list(object({
+    name                    = string
+    description             = optional(string)
+    infra_network           = optional(bool)
+    mtu                     = optional(number)
+    network_type            = optional(string)
+    trunk                   = optional(list(string))
+    vlan                    = optional(number) # only optional if trunk set??
+    vswitch                 = optional(string)
+    }))
+}

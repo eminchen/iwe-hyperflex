@@ -274,3 +274,5 @@ variable "software_version_policy" {
 #   #   server_firmware_version = string
 #   # })
 # }
+
+variable "additional_vm_network_vlans" {}

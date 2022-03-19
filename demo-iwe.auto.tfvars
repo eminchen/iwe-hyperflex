@@ -190,9 +190,16 @@ software_version_policy = {
 ## NOTE: Key can be anything - not used
 
 additional_vm_network_vlans = [
+  # {
+  #   name    = "LAB-29"
+  #   vlan_id = 29
+  #   vswitch = "vm"
+  #   mtu = 1500
+  #   network_type = "L2"
+  # }
   {
-    name    = "LAB-29"
-    vlan_id = 29
+    name    = "test-108"
+    vlan_id = 108
     vswitch = "vm"
     mtu = 1500
     network_type = "L2"

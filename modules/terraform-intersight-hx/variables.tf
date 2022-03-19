@@ -289,7 +289,7 @@ variable "additional_vm_network_vlans" {
     mtu                     = optional(number)
     network_type            = optional(string)
     trunk                   = optional(list(string))
-    vlan                    = optional(number) # only optional if trunk set??
+    vlan_id                 = optional(number) # only optional if trunk set?? # set to vlan_id for consistency
     vswitch                 = optional(string)
     }))
 }

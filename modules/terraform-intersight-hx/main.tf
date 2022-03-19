@@ -320,8 +320,8 @@ module "node_profile" {
 
 locals {
   vlan_map = {
-    for vlan in var.additional_vm_network_vlans :
-      lower(format("%s-%s", try(vlan.vswitch, "vm"), vlan.vlan_id)) => vlan
+    for val in var.additional_vm_network_vlans :
+      lower(format("%s-%d", try(val.vswitch, "vm"), val.vlan_id)) => val
   }
 }
 

@@ -47,6 +47,7 @@ module "hx" {
   # ucsm_config_policy = {}
 
   ### Additional (Day 2) VLANs for IWE Cluster ###
+  cluster_deployed                = false # Set to true after cluster deployed to configure day 2 vlans
   additional_vm_network_vlans     = var.additional_vm_network_vlans
 
 }

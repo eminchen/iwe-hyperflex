@@ -28,6 +28,7 @@ variable "server_firmware_version" {
 variable "hypervisor_version" {
   type        = string
   description = "Desired hypervisor version to apply for all the nodes on the HyperFlex cluster."
+  default = null
 }
 
 variable "hxdp_version" {

@@ -16,6 +16,12 @@ variable "wait_for_completion" {
   default = false
 }
 
+variable "cluster_deployed" {
+  type = bool
+  default = false
+  description = "Workaround to not deploy additional VLANs until this bool is set to true.  Should be set manually after HX IWE cluster deployment"
+}
+
 variable "tags" {
   type    = list(map(string))
   default = []
@@ -292,4 +298,5 @@ variable "additional_vm_network_vlans" {
     vlan_id                 = optional(number) # only optional if trunk set?? # set to vlan_id for consistency
     vswitch                 = optional(string)
     }))
+  default = null
 }

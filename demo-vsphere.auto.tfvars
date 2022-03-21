@@ -1,21 +1,21 @@
 ### COMMON SETTINGS ###
-action              = "Unassign" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op
-wait_for_completion = false
+action              = "No-op" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op
+wait_for_completion = true
 organization        = "default"
 tags                = []
 
 ### HYPERFLEX CLUSTER SETTINGS ###
 cluster = {
-  name                          = "TF-HX-IWE"
+  name                          = "TF-HX-VSPHERE"
   description                   = "HX Cluster deployed by Terrafrom"
   data_ip_address               = "169.254.0.1" # 169.254.0.1
   hypervisor_control_ip_address = "172.31.255.2"
-  hypervisor_type               = "IWE" # ESXi, IWE
+  hypervisor_type               = "ESXi" # ESXi, IWE
   mac_address_prefix            = "00:25:B5:00"
   mgmt_ip_address               = "10.67.53.226"
   mgmt_platform                 = "FI" # FI, EDGE
   replication                   = 3
-  host_name_prefix              = "tf-hx-iwe" # Must be lowercase
+  host_name_prefix              = "tf-hx-vsphere" # Must be lowercase
   # storage_cluster_auxiliary_ip  = ""
   # storage_type                  = "HyperFlexDp" # HyperFlexDp, ThirdParty
   # wwxn_prefix                   = ""
@@ -66,8 +66,12 @@ nodes = {
 ### ASSOCIATED POLICIES ###
 
 local_cred_policy = {
-  use_existing  = true
-  name          = "mel-dc4-hx1-local-credential-policy"
+  use_existing  = false
+  name          = "tf-hx-vsphere-security-policy"
+  # hxdp_root_pwd               = "" TFCB Workspace Variable
+  hypervisor_admin            = "root"
+  # hypervisor_admin_pwd        = "" TFCB Workspace Variable
+  factory_hypervisor_password = true
 }
 
 sys_config_policy = {
@@ -75,10 +79,10 @@ sys_config_policy = {
   name          = "mel-dc4-hx1-sys-config-policy"
 }
 
-# vcenter_config_policy = {
-#   use_existing  = true
-#   name          = "mel-dc4-hx1-vcenter-config-policy"
-# }
+vcenter_config_policy = {
+  use_existing  = true
+  name          = "mel-dc4-hx1-vcenter-config-policy"
+}
 
 # cluster_storage_policy = {
 #   use_existing  = true
@@ -92,8 +96,8 @@ auto_support_policy = {
 
 node_config_policy = {
   use_existing      = false
-  name              = "tf-hx-iwe-cluster-node-config-policy"
-  description       = "HX IWE Cluster Network Policy built from Terraform"
+  name              = "tf-hx-vsphere-cluster-node-config-policy"
+  description       = "HX vSphere ESXi Cluster Network Policy built from Terraform"
   ### HYPERFLEX STORAGE DATA NETWORK IPs ###
   # NOTE: Intersight will automatically allocate 169.254.0.0/24 for this network
   # data_ip_range = {
@@ -116,20 +120,12 @@ node_config_policy = {
     gateway     = "10.67.53.225"
     netmask     = "255.255.255.224"
     }
-  ### (IWE ONLY) HYPERVISOR CLUSTER CONTROL NETWORK IPs ###
-  hypervisor_control_ip_range = {
-    start_addr  = "172.31.255.10"
-    end_addr    = "172.31.255.255"
-    gateway     = "172.31.255.1"
-    netmask     = "255.255.255.0"
-    }
-
 }
 
 cluster_network_policy = {
   use_existing        = false
-  name                = "tf-hx-iwe-cluster-network-policy"
-  description         = "HX IWE Cluster Network Policy built from Terraform"
+  name                = "tf-hx-vsphere-cluster-network-policy"
+  description         = "HX vSphere ESXi Cluster Network Policy built from Terraform"
   jumbo_frame         = true
   uplink_speed        = "default"
   kvm_ip_range        = {
@@ -143,18 +139,9 @@ cluster_network_policy = {
     vlan_id = 107
   }
   vm_migration_vlan   = {
-    name    = "IWE-HYPER-NET-105"
-    vlan_id = 105
+    name    = "LOCAL-VMOTION-102"
+    vlan_id = 102
   }
-  ### NOTE: Cluster Network Policy is locked after deployment.  These VM Network VLANs are provisioned during initial deployment.
-  ### For Day 2 VLAN changes see "additional_vm_network_vlans"
-
-  vm_network_vlans    = [
-    {
-      name    = "IWE-VM-NET-106"
-      vlan_id = 106
-    }
-  ]
 }
 
 # proxy_setting_policy = {
@@ -174,10 +161,9 @@ cluster_network_policy = {
 
 software_version_policy = {
   use_existing            = false
-  name                    = "tf-iwe-sw-version"
-  description             = "HX IWE cluster software version policy created by Terraform"
+  name                    = "tf-vsphere-sw-version"
+  description             = "HX vSphere ESXi cluster software version policy created by Terraform"
   server_firmware_version = "4.2(1i)"
-  hypervisor_version      = "1.2(1a)"
   hxdp_version            = "4.5(2b)"
 }
 
@@ -185,27 +171,3 @@ software_version_policy = {
 #   use_existing = true
 #   name = ""
 # }
-
-### Additional (Day 2) VM Network VLANs ###
-## NOTE:
-## - name must be lower case - sub-module will convert to lower.
-## -
-
-additional_vm_network_vlans = [
-  # {
-  #   name    = "LAB-29"
-  #   vlan_id = 29
-  #   description = "Day 2 VLAN created by Terraform"
-  #   vswitch = "vm"
-  #   mtu = 1500
-  #   network_type = "L2"
-  # },
-  {
-    name    = "test-108"
-    vlan_id = 108
-    description = "Day 2 VLAN created by Terraform"
-    # vswitch = "vm"
-    # mtu = 1500
-    # network_type = "L2"
-  }
-]

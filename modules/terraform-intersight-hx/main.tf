@@ -317,7 +317,7 @@ module "node_profile" {
 
 
 ### Additional (Day 2) VM Network VLANs ###
-## NOTE: This assumes cluster has been deployed 
+## NOTE: This assumes cluster has been deployed
 
 locals {
   vlan_map = {
@@ -337,10 +337,10 @@ module "additional_vlans" {
   description             = try(each.value.description, null) # default
   infra_network           = try(each.value.infra_network, null) # default
   mtu                     = try(each.value.mtu, null) # default
-  network_type            = try(each.value.network_type, null) # default
+  network_type            = try(each.value.network_type, "L2") # default not working?
   trunk                   = try(each.value.trunk, null) # default
   vlan_id                 = try(each.value.vlan_id, null) # might be null if trunk used?
-  vswitch                 = try(each.value.vswitch, null) # default
+  vswitch                 = try(each.value.vswitch, "vm") # default not working?
   wait_for_completion     = var.wait_for_completion # Need?
   tags                    = var.tags
 }

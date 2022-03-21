@@ -323,7 +323,7 @@ locals {
   vlan_map = {
     for val in var.additional_vm_network_vlans :
       lower(format("%s-%d", val.vswitch == null ? "vm" : val.vswitch , val.vlan_id)) => val
-      if var.cluster.hypervisor_type == "IWE"
+      if var.cluster.hypervisor_type == "IWE" && var.action != "Unassign"
   }
 }
 

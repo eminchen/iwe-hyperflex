@@ -340,8 +340,10 @@ module "additional_vlans" {
   network_type            = each.value.network_type # default
   trunk                   = each.value.trunk # default
   vlan_id                 = each.value.vlan_id # might be null if trunk used?
-  vswitch                 = each.value.vswitch # default 
+  vswitch                 = each.value.vswitch # default
   wait_for_completion     = var.wait_for_completion # Need?
   tags                    = var.tags
+
+  depends_on = [module.cluster_profile]
 
 }

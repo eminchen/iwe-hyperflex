@@ -294,6 +294,14 @@ module "cluster_profile" {
 
 ### Node Profiles ###
 
+locals {
+  node_map = {
+    for key, val in var.nodes :
+      key => val
+      if var.action != "Unassign"
+  }
+}
+
 module "node_profile" {
   source      = "./modules/node_profile"
   # count       = var.ucsm_config_policy != null ? (var.ucsm_config_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 0 : 1) : 0

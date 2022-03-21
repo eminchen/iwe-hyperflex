@@ -49,7 +49,4 @@ module "hx" {
   ### Additional (Day 2) VLANs for IWE Cluster ###
   additional_vm_network_vlans     = var.additional_vm_network_vlans
 
-  lifecycle {
-    prevent_destroy = true
-  }
 }

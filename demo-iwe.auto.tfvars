@@ -204,8 +204,8 @@ additional_vm_network_vlans = [
     name    = "test-108"
     vlan_id = 108
     description = "Day 2 VLAN created by Terraform"
-    vswitch = "vm"
-    mtu = 1500
-    network_type = "L2"
+    # vswitch = "vm"
+    # mtu = 1500
+    # network_type = "L2"
   }
 ]

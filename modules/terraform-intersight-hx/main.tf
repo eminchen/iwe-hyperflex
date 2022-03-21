@@ -317,11 +317,13 @@ module "node_profile" {
 
 
 ### Additional (Day 2) VM Network VLANs ###
+## NOTE: This assumes cluster has been deployed 
 
 locals {
   vlan_map = {
     for val in var.additional_vm_network_vlans :
       lower(format("%s-%d", val.vswitch == null ? "vm" : val.vswitch , val.vlan_id)) => val
+      if var.cluster.hypervisor_type == "IWE"
   }
 }
 
@@ -330,7 +332,7 @@ module "additional_vlans" {
   for_each    = local.vlan_map
 
   name                    = each.value.name
-  cluster_moid            = module.cluster_profile.moid
+  # cluster_moid            = module.cluster_profile.moid
   cluster_name            = var.cluster.name
   description             = try(each.value.description, null) # default
   infra_network           = try(each.value.infra_network, null) # default

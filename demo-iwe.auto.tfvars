@@ -187,17 +187,19 @@ software_version_policy = {
 # }
 
 ### Additional (Day 2) VM Network VLANs ###
-## NOTE: Key can be anything - not used
+## NOTE:
+## - name must be lower case - sub-module will convert to lower.
+## -
 
 additional_vm_network_vlans = [
-  {
-    name    = "LAB-29"
-    vlan_id = 29
-    description = "Day 2 VLAN created by Terraform"
-    vswitch = "vm"
-    mtu = 1500
-    network_type = "L2"
-  },
+  # {
+  #   name    = "LAB-29"
+  #   vlan_id = 29
+  #   description = "Day 2 VLAN created by Terraform"
+  #   vswitch = "vm"
+  #   mtu = 1500
+  #   network_type = "L2"
+  # },
   # {
   #   name    = "test-108"
   #   vlan_id = 108

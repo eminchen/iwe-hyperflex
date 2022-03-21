@@ -46,7 +46,7 @@ module "hx" {
   software_version_policy         = var.software_version_policy
   # ucsm_config_policy = {}
 
-  ### Additional (Day 2) VLANs ###
+  ### Additional (Day 2) VLANs for IWE Cluster ###
   additional_vm_network_vlans     = var.additional_vm_network_vlans
 
 }

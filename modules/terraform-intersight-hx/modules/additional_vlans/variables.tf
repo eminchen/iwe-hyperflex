@@ -14,10 +14,10 @@ variable "name" {
   description = "Name of the virtual network. Name must be unique."
 }
 
-variable "cluster_moid" {
-  type        = string
-  description = "MOID of the target HyperFlex cluster the virtual network will be assigned to."
-}
+# variable "cluster_moid" {
+#   type        = string
+#   description = "MOID of the target HyperFlex cluster the virtual network will be assigned to."
+# }
 
 variable "cluster_name" {
   type        = string

@@ -334,13 +334,14 @@ module "additional_vlans" {
   name                    = each.value.name
   # cluster_moid            = module.cluster_profile.moid
   cluster_name            = var.cluster.name
-  description             = try(each.value.description, null) # default
-  infra_network           = try(each.value.infra_network, null) # default
-  mtu                     = try(each.value.mtu, null) # default
-  network_type            = try(each.value.network_type, "L2") # default not working?
-  trunk                   = try(each.value.trunk, null) # default
-  vlan_id                 = try(each.value.vlan_id, null) # might be null if trunk used?
-  vswitch                 = try(each.value.vswitch, "vm") # default not working?
+  description             = each.value.description # default
+  infra_network           = each.value.infra_network # default
+  mtu                     = each.value.mtu # default
+  network_type            = each.value.network_type # default
+  trunk                   = each.value.trunk # default
+  vlan_id                 = each.value.vlan_id # might be null if trunk used?
+  vswitch                 = each.value.vswitch, # default 
   wait_for_completion     = var.wait_for_completion # Need?
   tags                    = var.tags
+
 }

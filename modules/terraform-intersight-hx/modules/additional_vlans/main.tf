@@ -24,12 +24,12 @@ data "intersight_virtualization_iwe_cluster" "this" {
 resource "intersight_virtualization_virtual_network" "this" {
   name                    = lower(var.name)
   description             = var.description # default
-  infra_network           = var.infra_network # default
-  mtu                     = var.mtu #var.mtu # default
-  network_type            = var.network_type # default
+  infra_network           = var.infra_network == null ? false : var.infra_network # default
+  mtu                     = var.mtu == null ? 1500 : var.mtu #var.mtu # default
+  network_type            = var.network_type == null ? "L2" : var.network_type # default
   trunk                   = var.trunk # default
   vlan                    = var.vlan_id
-  vswitch                 = var.vswitch # default
+  vswitch                 = var.vswitch == null ? "vm" : var.vswitch # default
   wait_for_completion     = var.wait_for_completion # default
 
   dynamic "tags" {

@@ -305,7 +305,7 @@ locals {
 module "node_profile" {
   source      = "./modules/node_profile"
   # count       = var.ucsm_config_policy != null ? (var.ucsm_config_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 0 : 1) : 0
-  for_each = var.node_map
+  for_each = local.node_map
 
   name                    = format("%s-%d", var.cluster.host_name_prefix, each.value.cluster_index)
   description             = format("HX Node Profile for %s built by Terraform", each.key)

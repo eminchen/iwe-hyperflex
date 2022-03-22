@@ -1,6 +1,6 @@
 ### COMMON SETTINGS ###
-action              = "Validate" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op
-wait_for_completion = false
+action              = "Deploy" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op
+wait_for_completion = true
 organization        = "default"
 tags                = []
 

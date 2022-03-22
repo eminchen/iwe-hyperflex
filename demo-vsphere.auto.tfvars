@@ -129,6 +129,14 @@ cluster_network_policy = {
     name    = "LOCAL-VMOTION-102"
     vlan_id = 102
   }
+
+  ### Needs at least one VM Network ###
+  vm_network_vlans    = [
+    {
+      name    = "HX-VM-NET-106"
+      vlan_id = 106
+    }
+  ]
 }
 
 # proxy_setting_policy = {

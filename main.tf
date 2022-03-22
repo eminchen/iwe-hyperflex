@@ -27,7 +27,7 @@ module "hx" {
   source = "./modules/terraform-intersight-hx"
 
   action              = var.action
-  wait_for_completion = false
+  wait_for_completion = var.wait_for_completion
   organization        = var.organization
   tags                = var.tags
 

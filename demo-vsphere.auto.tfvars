@@ -1,6 +1,6 @@
 ### COMMON SETTINGS ###
 action              = "Deploy" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op
-wait_for_completion = true
+wait_for_completion = false
 organization        = "default"
 tags                = []
 
@@ -23,20 +23,6 @@ cluster = {
   storage_data_vlan = {
     name    = "HX-STR-DATA-103"
     vlan_id = 103
-    }
-
-  # ### IWE HYPERVISOR ONLY ###
-  storage_client_vlan = {
-    name        = "HX-STR-CLIENT-104"
-    vlan_id     = 104
-    ip_address  = "169.254.240.1"
-    netmask     = "255.255.248.0" # 255.255.248.0 hard set!
-    }
-
-  cluster_internal_subnet = {
-    gateway                     = "192.168.0.1"
-    ip_address                  = "192.168.0.0"
-    netmask                     = "255.255.0.0"
     }
 
   }
@@ -65,14 +51,15 @@ nodes = {
 
 ### ASSOCIATED POLICIES ###
 
-local_cred_policy = {
-  use_existing  = false
-  name          = "tf-hx-vsphere-security-policy"
-  # hxdp_root_pwd               = "" TFCB Workspace Variable
-  hypervisor_admin            = "root"
-  # hypervisor_admin_pwd        = "" TFCB Workspace Variable
-  factory_hypervisor_password = true
-}
+## NOTE: local_cred_policy defined in TFCB workspace variable
+# local_cred_policy = {
+#   use_existing  = false
+#   name          = "tf-hx-vsphere-security-policy"
+#   # hxdp_root_pwd               = "" TFCB Workspace Variable
+#   hypervisor_admin            = "root"
+#   # hypervisor_admin_pwd        = "" TFCB Workspace Variable
+#   factory_hypervisor_password = true
+# }
 
 sys_config_policy = {
   use_existing  = true

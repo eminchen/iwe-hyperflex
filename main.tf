@@ -35,7 +35,7 @@ module "hx" {
   nodes                           = var.nodes
   local_cred_policy               = var.local_cred_policy
   sys_config_policy               = var.sys_config_policy
-  # vcenter_config_policy           = var.vcenter_config_policy
+  vcenter_config_policy           = var.vcenter_config_policy
   # cluster_storage_policy = {}
   auto_support_policy             = var.auto_support_policy
   node_config_policy              = var.node_config_policy

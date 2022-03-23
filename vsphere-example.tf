@@ -36,7 +36,7 @@ module "hx" {
   cluster = {
     name                          = "TF-HX-VSPHERE"
     description                   = "HX Cluster deployed by Terrafrom"
-    data_ip_address               = "169.254.0.1" # 169.254.0.1
+    # data_ip_address               = "169.254.0.1"
     hypervisor_control_ip_address = "172.31.255.2"
     hypervisor_type               = "ESXi" # ESXi, IWE
     mac_address_prefix            = "00:25:B5:00"
@@ -79,8 +79,8 @@ module "hx" {
 
   ### ASSOCIATED POLICIES ###
 
-  ## NOTE: local_cred_policy defined in TFCB workspace variable. No passwords stored here.
   local_cred_policy = {
+    ## NOTE: Passwords have been defined as TFCB workspace variables. No passwords stored here.
     use_existing  = false
     name          = "tf-hx-vsphere-security-policy"
     hxdp_root_pwd               = var.hxdp_root_pwd
@@ -113,14 +113,6 @@ module "hx" {
     use_existing      = false
     name              = "tf-hx-vsphere-cluster-node-config-policy"
     description       = "HX vSphere ESXi Cluster Network Policy built from Terraform"
-    ### HYPERFLEX STORAGE DATA NETWORK IPs ###
-    # NOTE: Intersight will automatically allocate 169.254.0.0/24 for this network
-    # data_ip_range = {
-    #   start_addr  = ""
-    #   end_addr    = ""
-    #   gateway     = ""
-    #   netmask     = ""
-    #   }
     ### HYPERVISOR MANAGMENT IPs ###
     mgmt_ip_range = {
       start_addr  = "10.67.53.227"
@@ -157,9 +149,8 @@ module "hx" {
       name    = "LOCAL-VMOTION-102"
       vlan_id = 102
     }
-
-    ### Needs at least one VM Network ###
     vm_network_vlans    = [
+      ### NOTE: Cluster Network Policy requires at least one VM Network to be defined ###
       {
         name    = "HX-VM-NET-106"
         vlan_id = 106

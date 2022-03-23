@@ -41,6 +41,7 @@ variable "description" {
 variable "data_ip_address" {
   type        = string
   description = "The storage data IP address for the HyperFlex cluster."
+  default = null
 }
 
 variable "hypervisor_control_ip_address" {

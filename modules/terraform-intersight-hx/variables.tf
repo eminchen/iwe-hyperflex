@@ -37,7 +37,7 @@ variable "cluster" {
   type = object({
     name                          = string
     description                   = string
-    data_ip_address               = string
+    data_ip_address               = optional(string)
     hypervisor_control_ip_address = string
     hypervisor_type               = string ## ESXi, IWE, HyperV
     mac_address_prefix            = string

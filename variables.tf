@@ -25,6 +25,9 @@ variable "hypervisor_admin_pwd" {
   sensitive = true
 }
 
+
+### TEMPORARY VARIABLES ###
+
 variable "action" {
   type = string
   default = "No-op" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op
@@ -51,8 +54,6 @@ variable "organization" {
   description = "Organization Name"
   default     = "default"
 }
-
-### TEMPORARY VARIABLES ###
 
 variable "cluster" {
   # type = object({

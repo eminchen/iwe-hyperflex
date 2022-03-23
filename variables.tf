@@ -15,6 +15,16 @@ variable "intersight_url" {
 
 ### HyperFlex Profile Variables
 
+variable "hxdp_root_pwd" {
+  type = string
+  sensitive = true
+}
+
+variable "hypervisor_admin_pwd" {
+  type = string
+  sensitive = true
+}
+
 variable "action" {
   type = string
   default = "No-op" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op
@@ -42,7 +52,7 @@ variable "organization" {
   default     = "default"
 }
 
-variable "nodes" {}
+### TEMPORARY VARIABLES ###
 
 variable "cluster" {
   # type = object({

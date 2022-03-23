@@ -298,5 +298,5 @@ variable "additional_vm_network_vlans" {
     vlan_id                 = optional(number) # only optional if trunk set?? # set to vlan_id for consistency
     vswitch                 = optional(string)
     }))
-  default = null
+  default = []
 }

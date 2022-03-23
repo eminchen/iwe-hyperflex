@@ -1,4 +1,5 @@
 terraform {
+  # NOTE: Remove the 'backend' section for locally run Terraform plans with no remote state management.  This is not recommended.
   backend "remote" {
     hostname = "app.terraform.io"
     organization = "mel-ciscolabs-com"
@@ -36,7 +37,6 @@ module "hx" {
   cluster = {
     name                          = "TF-HX-VSPHERE"
     description                   = "HX Cluster deployed by Terrafrom"
-    # data_ip_address               = "169.254.0.1"
     hypervisor_control_ip_address = "172.31.255.2"
     hypervisor_type               = "ESXi" # ESXi, IWE
     mac_address_prefix            = "00:25:B5:00"
@@ -44,9 +44,6 @@ module "hx" {
     mgmt_platform                 = "FI" # FI, EDGE
     replication                   = 3
     host_name_prefix              = "tf-hx-svr" # Must be lowercase
-    # storage_cluster_auxiliary_ip  = ""
-    # storage_type                  = "HyperFlexDp" # HyperFlexDp, ThirdParty
-    # wwxn_prefix                   = ""
 
     storage_data_vlan = {
       name    = "HX-STR-DATA-103"
@@ -58,16 +55,7 @@ module "hx" {
   ### ASSIGNED NODES (SERVERS) ###
   nodes = {
     WZP23470VYT = {
-      cluster_index           = 1
-      ## NOTE: Intersight will dynamically allocate IPs from pools defined in node config policy if not set explicitly ##
-      # hxdp_data_ip            = ""
-      # hxdp_mgmt_ip            = ""
-      # hypervisor_data_ip      = ""
-      # hypervisor_mgmt_ip      = ""
-      # ## IWE ONLY
-      # hxdp_storage_client_ip  = ""
-      # hypervisor_control_ip   = ""
-
+      cluster_index = 1
     }
     WZP23470VYJ = {
       cluster_index = 2
@@ -98,11 +86,6 @@ module "hx" {
     use_existing  = true
     name          = "mel-dc4-hx1-vcenter-config-policy"
   }
-
-  # cluster_storage_policy = {
-  #   use_existing  = true
-  #   name          = ""
-  # }
 
   auto_support_policy = {
     use_existing  = true
@@ -158,21 +141,6 @@ module "hx" {
     ]
   }
 
-  # proxy_setting_policy = {
-  #   use_existing  = true
-  #   name          = ""
-  # }
-
-  # ext_fc_storage_policy = {
-  #   use_existing = true
-  #   name = ""
-  # }
-
-  # ext_iscsi_storage_policy = {
-  #   use_existing = true
-  #   name = ""
-  # }
-
   software_version_policy = {
     use_existing            = false
     name                    = "tf-vsphere-sw-version"
@@ -180,9 +148,5 @@ module "hx" {
     server_firmware_version = "4.2(1i)"
     hxdp_version            = "4.5(2b)"
   }
-
-  # ucsm_config_policy = {
-  #   use_existing = true
-  #   name = ""
-  # }
+  
 }

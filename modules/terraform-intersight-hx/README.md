@@ -27,7 +27,7 @@ This module will suport deploying HyperFlex clusters with either the default *VM
 
 ### VMware vSphere ESXi Operating System
 #### Assumptions
-* If required, a vCenter instance should be available for the HX cluster to be registered to.  This is defined in an optional associated vCenter configuration policy.  If creating a new policy with Terraform, the password for the vCenter account should not be included in the code directly and instead be configured in either a local tfvars file excluded from the Git repository or as a sensitive variable in the Terraform workspace (Cloud / Enterprise verions).
+* If required, a vCenter instance should be available for the HX cluster to be registered to.  This is defined in an optional associated vCenter configuration policy.  If creating a new policy with Terraform, the password for the vCenter account should not be included in the code directly and instead be configured in either a local tfvars file excluded from the Git repository or as a sensitive variable in the Terraform workspace (Cloud / Enterprise versions).
 
 #### Usage
 The following is an example plan that uses this module to define and create a new VMware vSphere ESXi-based HyperFlex DC cluster assigned to 3 servers (nodes).  Please see the `examples/vsphere/dc` directory for more details.
@@ -191,11 +191,11 @@ module "hx" {
 
 #### Results
 
-!(vCenter)[./images/new-vsphere-cluster.png]
+![vCenter](./images/new-vsphere-cluster.png)
 
-!(Overview)[./images/vsphere-profile-overview.png]
+![Overview](./images/vsphere-profile-overview.png)
 
-!(Policies)[./images/vsphere-profile-policies.png]
+![Policies](./images/vsphere-profile-policies.png)
 
 ### Cisco Intersight Workload Engine Operating System
 

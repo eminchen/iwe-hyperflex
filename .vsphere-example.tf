@@ -125,11 +125,11 @@ module "hx" {
       gateway     = "10.67.29.1"
     }
     mgmt_vlan           = {
-      name    = "IWE-MGMT-107"
+      name    = "HX-MGMT-107"
       vlan_id = 107
     }
     vm_migration_vlan   = {
-      name    = "LOCAL-VMOTION-102"
+      name    = "HX-VMOTION-102"
       vlan_id = 102
     }
     vm_network_vlans    = [
@@ -148,5 +148,5 @@ module "hx" {
     server_firmware_version = "4.2(1i)"
     hxdp_version            = "4.5(2b)"
   }
-  
+
 }

@@ -298,7 +298,7 @@ locals {
   node_map = {
     for key, val in var.nodes :
       key => val
-      if var.action != "Unassign"
+      # if var.action != "Unassign"
   }
 }
 

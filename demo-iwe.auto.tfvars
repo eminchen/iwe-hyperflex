@@ -1,5 +1,5 @@
 ### COMMON SETTINGS ###
-action              = "No-op" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op
+action              = "Unassign" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op
 wait_for_completion = false
 organization        = "default"
 tags                = []
@@ -42,9 +42,9 @@ cluster = {
   }
 
 ### ASSIGNED NODES (SERVERS) ###
-nodes = {
-  WZP23470VYT = {
-    cluster_index           = 1
+#nodes = {
+#  WZP23470VYT = {
+#    cluster_index           = 1
     ## NOTE: Intersight will dynamically allocate IPs from pools defined in node config policy if not set explicitly ##
     # hxdp_data_ip            = ""
     # hxdp_mgmt_ip            = ""
@@ -54,25 +54,25 @@ nodes = {
     # hxdp_storage_client_ip  = ""
     # hypervisor_control_ip   = ""
 
-  }
-  WZP23470VYJ = {
-    cluster_index = 2
-  }
-  WZP23470VYE = {
-    cluster_index = 3
-  }
-}
+#  }
+#  WZP23470VYJ = {
+#    cluster_index = 2
+#  }
+#  WZP23470VYE = {
+#    cluster_index = 3
+#  }
+#}
 
 ### ASSOCIATED POLICIES ###
 
 local_cred_policy = {
   use_existing  = true
-  name          = "mel-dc4-hx1-local-credential-policy"
+  name          = "iwe-cloud2-local-credential-policy"
 }
 
 sys_config_policy = {
   use_existing  = true
-  name          = "mel-dc4-hx1-sys-config-policy"
+  name          = "iwe-cloud2-sys-config-policy"
 }
 
 # vcenter_config_policy = {
@@ -87,7 +87,7 @@ sys_config_policy = {
 
 auto_support_policy = {
   use_existing  = true
-  name          = "mel-dc4-hx1-auto-support-policy"
+  name          = "iwe-cloud2-auto-support-policy"
 }
 
 node_config_policy = {

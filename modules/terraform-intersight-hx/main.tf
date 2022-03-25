@@ -307,7 +307,7 @@ module "node_profile" {
   # count       = var.ucsm_config_policy != null ? (var.ucsm_config_policy.use_existing == true && var.cluster.mgmt_platform == "FI" ? 0 : 1) : 0
   for_each = local.node_map
 
-  name                    = format("%s-%d", var.cluster.host_name_prefix, each.value.cluster_index)
+  name                    = each.value.hostname != null ? each.value.hostname : format("%s-%d", var.cluster.host_name_prefix, each.value.cluster_index)
   description             = format("HX Node Profile for %s built by Terraform", each.key)
   hypervisor_type         = var.cluster.hypervisor_type # ESXi vs IWE
   cluster_moid            = module.cluster_profile.moid

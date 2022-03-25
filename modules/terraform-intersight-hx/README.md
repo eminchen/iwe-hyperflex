@@ -403,6 +403,7 @@ By default, Intersight will automatically allocate IP addresses for each node fr
 nodes = {
   WZP23470VYT = {
     cluster_index           = 1
+    hostname                = "server1"
     hxdp_data_ip            = "10.1.1.101" # Usually Auto-Assigned from 169.254.0.0/24
     hxdp_mgmt_ip            = "10.1.2.101"
     hxdp_storage_client_ip  = "10.1.3.101" # IWE Only - Usually Auto-Assigned from 169.254.240.0/24
@@ -413,6 +414,7 @@ nodes = {
   }
   WZP23470VYJ = {
     cluster_index = 2
+    hostname                = "server2"
     hxdp_data_ip            = "10.1.1.102" # Usually Auto-Assigned from 169.254.0.0/24
     hxdp_mgmt_ip            = "10.1.2.102"
     hxdp_storage_client_ip  = "10.1.3.102" # IWE Only - Usually Auto-Assigned from 169.254.240.0/24
@@ -422,6 +424,7 @@ nodes = {
   }
   WZP23470VYE = {
     cluster_index = 3
+    hostname                = "server3"
     hxdp_data_ip            = "10.1.1.103" # Usually Auto-Assigned from 169.254.0.0/24
     hxdp_mgmt_ip            = "10.1.2.103"
     hxdp_storage_client_ip  = "10.1.3.103" # IWE Only - Usually Auto-Assigned from 169.254.240.0/24

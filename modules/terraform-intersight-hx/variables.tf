@@ -71,6 +71,7 @@ variable "nodes" {
   ## Assumes serial number is the index
   type = map(object({
     cluster_index           = number
+    hostname                = optional(string)
     hxdp_data_ip            = optional(string)
     hxdp_mgmt_ip            = optional(string)
     hxdp_storage_client_ip  = optional(string)

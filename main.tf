@@ -1,7 +1,7 @@
 terraform {
   backend "remote" {
     hostname = "app.terraform.io"
-    organization = "mel-ciscolabs-com"
+    organization = "Toronto_DCLAB"
     workspaces {
       name = "iwe-hyperflex"
     }

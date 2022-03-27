@@ -56,8 +56,8 @@ variable "cluster" {
     storage_client_vlan           = optional(object({
       name       = string
       vlan_id    = number
-      ip_address = string
-      netmask    = string
+      ip_address = optional(string)
+      netmask    = optional(string)
       }))
     cluster_internal_subnet       = optional(object({
       gateway    = string

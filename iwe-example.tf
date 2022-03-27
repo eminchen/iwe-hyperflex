@@ -54,8 +54,6 @@ module "hx" {
     storage_client_vlan = {
       name        = "HX-STR-CLIENT-104"
       vlan_id     = 104
-      ip_address  = "169.254.240.1"
-      netmask     = "255.255.248.0" # 255.255.248.0 hard set!
       }
     cluster_internal_subnet = {
       gateway                     = "192.168.0.1"

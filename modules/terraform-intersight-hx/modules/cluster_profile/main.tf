@@ -27,22 +27,6 @@ resource "intersight_hyperflex_cluster_profile" "this" {
   storage_client_ip_address     = var.storage_client_vlan.ip_address
   storage_client_netmask        = var.storage_client_vlan.netmask
 
-  ## NEEDED? ##
-  /*
-  httpproxypolicy??
-  node_profile_config??
-  policy_bucket??
-  src_template??
-  */
-
-  # node_profile_config = []
-
-  # dynamic "node_profile_config" {
-  #   for_each = var.nodes
-  #   content {
-  #     moid = data.intersight_hyperflex_node.nodes[node_profile_config.value].moid
-  #   }
-  # }
 
   dynamic "auto_support" {
     for_each = var.auto_support_policy_moid == null ? [] : [var.auto_support_policy_moid]
@@ -58,7 +42,6 @@ resource "intersight_hyperflex_cluster_profile" "this" {
       gateway     = cluster_internal_subnet.value.gateway
       ip_address  = cluster_internal_subnet.value.ip_address
       netmask     = cluster_internal_subnet.value.netmask
-      # object_type
     }
   }
 
@@ -150,13 +133,5 @@ resource "intersight_hyperflex_cluster_profile" "this" {
       moid = ucsm_config.value
     }
   }
-
-
-  # lifecycle {
-  #   ignore_changes = [
-  #     # Ignore changes to Action as Intersight will reset these to "No-op" once applied
-  #     action
-  #   ]
-  # }
 
 }

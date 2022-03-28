@@ -24,7 +24,8 @@ provider "intersight" {
 }
 
 module "hx" {
-  source = "./modules/terraform-intersight-hx"
+  source  = "cisco-apjc-cloud-se/hx/intersight"
+  version = "1.0.2"
 
   ### COMMON SETTINGS ###
   action              = "No-op" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op

@@ -37,7 +37,7 @@ module "hx" {
   ### HYPERFLEX CLUSTER SETTINGS ###
   cluster = {
     name                          = "TF-HX-IWE"
-    description                   = "HX Cluster deployed by Terrafrom TEST"
+    description                   = "HX Cluster deployed by Terrafrom"
     hypervisor_control_ip_address = "172.31.255.2"
     hypervisor_type               = "IWE" # ESXi, IWE
     mac_address_prefix            = "00:25:B5:00"

@@ -38,7 +38,6 @@ module "hx" {
   cluster = {
     name                          = "TF-HX-IWE"
     description                   = "HX Cluster deployed by Terrafrom"
-    hypervisor_control_ip_address = "172.31.255.2"
     hypervisor_type               = "IWE" # ESXi, IWE
     mac_address_prefix            = "00:25:B5:00"
     mgmt_ip_address               = "10.67.53.226"
@@ -52,6 +51,7 @@ module "hx" {
       }
 
     ### IWE HYPERVISOR ONLY CLUSTER SETTINGS ###
+    hypervisor_control_ip_address = "172.31.255.2"
     storage_client_vlan = {
       name        = "HX-STR-CLIENT-104"
       vlan_id     = 104

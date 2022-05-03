@@ -162,10 +162,10 @@ cluster_network_policy = {
   ]
 }
 
-# proxy_setting_policy = {
-#   use_existing  = true
-#   name          = ""
-# }
+proxy_setting_policy = {
+   use_existing  = true
+   name          = "iwe-cloud2-proxy-setting-policy"
+}
 
 # ext_fc_storage_policy = {
 #   use_existing = true

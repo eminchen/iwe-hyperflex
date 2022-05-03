@@ -1,5 +1,5 @@
 ### COMMON SETTINGS ###
-action              = "No-op" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op
+action              = "Unassign" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op
 wait_for_completion = false
 organization        = "default"
 tags                = []
@@ -146,18 +146,14 @@ cluster_network_policy = {
     name    = "IWE-HYPER-NET-105"
     vlan_id = 105
   }
+  ### NOTE: Cluster Network Policy is locked after deployment.
+  ### These VM Network VLANs are provisioned during initial deployment. Preference is to add these post-deployment
+  ### For Day 2 VLAN changes see "additional_vm_network_vlans".
+
   vm_network_vlans    = [
-    {
-      name    = "IWE-VM-NET-106"
-      vlan_id = 106
-    },
-    {
-      name    = "LAB-28"
-      vlan_id = 28
-    }
     # {
-    #   name    = "LAB-29"
-    #   vlan_id = 29
+    #   name    = "IWE-VM-NET-106"
+    #   vlan_id = 106
     # }
   ]
 }
@@ -190,3 +186,27 @@ software_version_policy = {
 #   use_existing = true
 #   name = ""
 # }
+
+### Additional (Day 2) VM Network VLANs ###
+## NOTE:
+## - name must be lower case - sub-module will convert to lower.
+## -
+
+additional_vm_network_vlans = [
+  # {
+  #   name    = "LAB-29"
+  #   vlan_id = 29
+  #   description = "Day 2 VLAN created by Terraform"
+  #   vswitch = "vm"
+  #   mtu = 1500
+  #   network_type = "L2"
+  # },
+  {
+    name    = "test-108"
+    vlan_id = 108
+    description = "Day 2 VLAN created by Terraform"
+    # vswitch = "vm"
+    # mtu = 1500
+    # network_type = "L2"
+  }
+]

@@ -28,16 +28,16 @@ variable "hypervisor_admin_pwd" {
 
 # ### TEMPORARY VARIABLES ###
 #
-# variable "action" {
-#   type = string
-#   default = "No-op" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op
-#   description = "User initiated action. Each profile type has its own supported actions. For HyperFlex cluster profile, the supported actions are -- Validate, Deploy, Continue, Retry, Abort, Unassign"
-#
-#   validation {
-#     condition = contains(["Validate", "Deploy", "Continue", "Retry", "Abort", "Unassign", "No-op"], var.action)
-#     error_message = "The action value must be one of Validate, Deploy, Continue, Retry, Abort, Unassign or No-op."
-#   }
-# }
+variable "action" {
+  type = string
+  default = "No-op" # Validate, Deploy, Continue, Retry, Abort, Unassign, No-op
+  description = "User initiated action. Each profile type has its own supported actions. For HyperFlex cluster profile, the supported actions are -- Validate, Deploy, Continue, Retry, Abort, Unassign"
+
+  validation {
+    condition = contains(["Validate", "Deploy", "Continue", "Retry", "Abort", "Unassign", "No-op"], var.action)
+    error_message = "The action value must be one of Validate, Deploy, Continue, Retry, Abort, Unassign or No-op."
+  }
+}
 #
 # variable "wait_for_completion" {
 #   type = bool

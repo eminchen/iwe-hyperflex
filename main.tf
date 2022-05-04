@@ -12,7 +12,7 @@ terraform {
       version = "1.0.28"
     }
   }
-  # experiments = [module_variable_optional_attrs]
+  experiments = [module_variable_optional_attrs]
 }
 
 ### Providers ###

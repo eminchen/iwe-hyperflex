@@ -207,7 +207,7 @@ variable "proxy_setting_policy" {
     password      = string
     port          = number
     username      = string
- })
+  })
 }
 #
 # # variable "ext_fc_storage_policy" {

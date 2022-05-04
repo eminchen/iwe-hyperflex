@@ -129,16 +129,15 @@ variable "sys_config_policy" {
 # #   # })
 # # }
 #
-# variable "auto_support_policy" {
-#   # type = object({
-#   #   use_existing              = bool
-#   #   name                      = string
-#   #   description               = string
-#   #   admin_state               = bool
-#   #   service_ticket_receipient = string
-#   #
-#   # })
-# }
+variable "auto_support_policy" {
+  type = object({
+    use_existing              = bool
+    name                      = string
+    description               = string
+    admin_state               = bool
+    service_ticket_receipient = string
+  })
+}
 #
 # variable "node_config_policy" {
 #   # type = object({

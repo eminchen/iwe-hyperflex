@@ -9,7 +9,7 @@ terraform {
   required_providers {
     intersight = {
       source = "CiscoDevNet/intersight"
-      # version = "1.0.12"
+      version = "1.0.28"
     }
   }
   # experiments = [module_variable_optional_attrs]

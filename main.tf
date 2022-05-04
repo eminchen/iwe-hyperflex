@@ -86,8 +86,9 @@ provider "intersight" {
 # }
 
 module "hx" {
-  source = "./modules/terraform-intersight-hx"
-
+  source  = "cisco-apjc-cloud-se/hx/intersight"
+  version = "1.0.2" 
+  
   action              = var.action
   wait_for_completion = false
   organization        = var.organization

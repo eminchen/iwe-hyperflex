@@ -87,7 +87,7 @@ provider "intersight" {
 
 module "hx" {
   source  = "cisco-apjc-cloud-se/hx/intersight"
-  version = "1.0.3" 
+#  version = "1.0.3" 
   
   action              = var.action
   wait_for_completion = false

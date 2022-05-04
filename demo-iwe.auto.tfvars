@@ -22,7 +22,7 @@ cluster = {
 
   storage_data_vlan = {
     name    = "HX-STR-DATA-18"
-    vlan_id = 18
+    vlan_id = 16
     }
 
   # ### IWE HYPERVISOR ONLY ###

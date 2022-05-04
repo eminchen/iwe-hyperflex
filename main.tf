@@ -103,7 +103,7 @@ module "hx" {
   auto_support_policy             = var.auto_support_policy
   node_config_policy              = var.node_config_policy
   cluster_network_policy          = var.cluster_network_policy
-  # proxy_setting_policy = {}
+  proxy_setting_policy            = var.proxy_setting_policy
   # ext_fc_storage_policy = {}
   # ext_iscsi_storage_policy = {}
   software_version_policy         = var.software_version_policy

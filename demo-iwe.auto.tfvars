@@ -92,7 +92,7 @@ auto_support_policy = {
 
 node_config_policy = {
   use_existing      = false
-  name              = "tf-hx-iwe-cluster-node-config-policy"
+  name              = "iwe-cloud2-node-config-policy"
   description       = "HX IWE Cluster Network Policy built from Terraform"
   ### HYPERFLEX STORAGE DATA NETWORK IPs ###
   # NOTE: Intersight will automatically allocate 169.254.0.0/24 for this network
@@ -158,10 +158,10 @@ cluster_network_policy = {
   ]
 }
 
-# proxy_setting_policy = {
-#   use_existing  = true
-#   name          = ""
-# }
+proxy_setting_policy = {
+   use_existing  = true
+   name          = "iwe-cloud2-proxy-setting-policy"
+}
 
 # ext_fc_storage_policy = {
 #   use_existing = true

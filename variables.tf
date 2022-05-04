@@ -172,43 +172,43 @@ variable "auto_support_policy" {
 #   # })
 # }
 #
-# variable "cluster_network_policy" {
-#   # type = object({
-#   #   use_existing = bool
-#   #   name         = string
-#   #   description  = string
-#   #   jumbo_frame  = bool
-#   #   mac_prefix_range = object({
-#   #     end_addr   = string
-#   #     start_addr = string
-#   #     })
-#   #   mgmt_vlan = object({
-#   #     name    = string
-#   #     vlan_id = number
-#   #     })
-#   #   uplink_speed = string
-#   #   vm_migration_vlan = object({
-#   #     name    = string
-#   #     vlan_id = number
-#   #     })
-#   #   vm_network_vlans = list(object({
-#   #     name    = string
-#   #     vlan_id = number
-#   #     }))
-#   # })
-# }
+variable "cluster_network_policy" {
+  type = object({
+   use_existing = bool
+   name         = string
+   description  = string
+   jumbo_frame  = bool
+   mac_prefix_range = object({
+     end_addr   = string
+     start_addr = string
+     })
+   mgmt_vlan = object({
+     name    = string
+     vlan_id = number
+     })
+   uplink_speed = string
+   vm_migration_vlan = object({
+     name    = string
+     vlan_id = number
+     })
+   vm_network_vlans = list(object({
+     name    = string
+     vlan_id = number
+     }))
+ })
+}
 #
-# # variable "proxy_setting_policy" {
-# #   # type = object({
-# #   #   use_existing  = bool
-# #   #   name          = string
-# #   #   description   = string
-# #   #   hostname      = string
-# #   #   password      = string
-# #   #   port          = number
-# #   #   username      = string
-# #   # })
-# # }
+variable "proxy_setting_policy" {
+  type = object({
+    use_existing  = bool
+    name          = string
+    description   = string
+    hostname      = string
+    password      = string
+    port          = number
+    username      = string
+ })
+}
 #
 # # variable "ext_fc_storage_policy" {
 # #   # type = object({
@@ -248,16 +248,15 @@ variable "auto_support_policy" {
 # #   # })
 # # }
 #
-# variable "software_version_policy" {
-#   # type = object({
-#   #   use_existing            = bool
-#   #   name                    = string
-#   #   description             = string
-#   #   server_firmware_version = string
-#   #   hypervisor_version      = optional(string)
-#   #   hxdp_version            = string
-#   # })
-# }
+variable "software_version_policy" {
+  type = object({
+    use_existing            = bool
+    name                    = string
+    description             = string
+    server_firmware_version = string
+    hypervisor_version      = optional(string)
+  })
+}
 #
 # # variable "ucsm_config_policy" {
 # #   # type = object({

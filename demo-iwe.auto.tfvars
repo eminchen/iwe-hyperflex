@@ -21,14 +21,14 @@ cluster = {
   # wwxn_prefix                   = ""
 
   storage_data_vlan = {
-    name    = "HX-STR-DATA-103"
-    vlan_id = 103
+    name    = "HX-STR-DATA-18"
+    vlan_id = 18
     }
 
   # ### IWE HYPERVISOR ONLY ###
   storage_client_vlan = {
-    name        = "HX-STR-CLIENT-104"
-    vlan_id     = 104
+    name        = "HX-STR-CLIENT-17"
+    vlan_id     = 17
     ip_address  = "169.254.240.1"
     netmask     = "255.255.248.0" # 255.255.248.0 hard set!
     }
@@ -104,23 +104,23 @@ node_config_policy = {
   #   }
   ### HYPERVISOR MANAGMENT IPs ###
   mgmt_ip_range = {
-    start_addr  = "10.67.53.227"
-    end_addr    = "10.67.53.230"
-    gateway     = "10.67.53.225"
-    netmask     = "255.255.255.224"
+    start_addr  = "10.85.59.177"
+    end_addr    = "10.85.59.180"
+    gateway     = "10.85.59.1"
+    netmask     = "255.255.255.0"
   }
   ### HYPERFLEX STORAGE CONTROLLER MANAGMENT IPs ###
   hxdp_ip_range = {
-    start_addr  = "10.67.53.231"
-    end_addr    = "10.67.53.234"
-    gateway     = "10.67.53.225"
-    netmask     = "255.255.255.224"
+    start_addr  = "10.85.59.181"
+    end_addr    = "10.85.59.184"
+    gateway     = "10.85.59.1"
+    netmask     = "255.255.255.0"
     }
   ### (IWE ONLY) HYPERVISOR CLUSTER CONTROL NETWORK IPs ###
   hypervisor_control_ip_range = {
-    start_addr  = "172.31.255.10"
-    end_addr    = "172.31.255.255"
-    gateway     = "172.31.255.1"
+    start_addr  = "172.16.1.2"
+    end_addr    = "172.16.1.5"
+    gateway     = "172.16.1.254"
     netmask     = "255.255.255.0"
     }
 
@@ -133,28 +133,28 @@ cluster_network_policy = {
   jumbo_frame         = true
   uplink_speed        = "default"
   kvm_ip_range        = {
-    start_addr  = "10.67.29.115"
-    end_addr    = "10.67.29.118"
+    start_addr  = "10.85.59.173"
+    end_addr    = "10.85.59.176"
     netmask     = "255.255.255.0"
-    gateway     = "10.67.29.1"
+    gateway     = "10.85.59.1"
   }
   mgmt_vlan           = {
-    name    = "IWE-MGMT-107"
-    vlan_id = 107
+    name    = "IWE-MGMT-10"
+    vlan_id = 10
   }
   vm_migration_vlan   = {
-    name    = "IWE-HYPER-NET-105"
-    vlan_id = 105
+    name    = "IWE-HYPER-NET-18"
+    vlan_id = 18
   }
   ### NOTE: Cluster Network Policy is locked after deployment.
   ### These VM Network VLANs are provisioned during initial deployment. Preference is to add these post-deployment
   ### For Day 2 VLAN changes see "additional_vm_network_vlans".
 
   vm_network_vlans    = [
-    # {
-    #   name    = "IWE-VM-NET-106"
-    #   vlan_id = 106
-    # }
+    {
+      name    = "IWE-VM-NET-10"
+      vlan_id = 10
+    }
   ]
 }
 
@@ -202,9 +202,9 @@ additional_vm_network_vlans = [
   #   network_type = "L2"
   # },
   {
-    name    = "test-108"
-    vlan_id = 108
-    description = "Day 2 VLAN created by Terraform"
+  #  name    = "test-108"
+  # vlan_id = 108
+  #  description = "Day 2 VLAN created by Terraform"
     # vswitch = "vm"
     # mtu = 1500
     # network_type = "L2"

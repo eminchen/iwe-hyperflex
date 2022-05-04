@@ -70,24 +70,24 @@ variable "cluster" {
      storage_data_vlan             = object({
        name    = string
        vlan_id = number
-       })
-  storage_cluster_auxiliary_ip  = optional(string)
-  storage_type                  = optional(string)
-  wwxn_prefix                   = optional(string)
-  ## IWE ONLY ##
-  storage_client_vlan = object({
-    name       = string
-    vlan_id    = number
-    ip_address = string
-    netmask    = string
+     })
+    storage_cluster_auxiliary_ip  = optional(string)
+    storage_type                  = optional(string)
+    wwxn_prefix                   = optional(string)
+    ## IWE ONLY ##
+    storage_client_vlan = object({
+      name       = string
+      vlan_id    = number
+      ip_address = string
+      netmask    = string
     })
-  cluster_internal_subnet       = optional(object({
-     gateway                     = string
-     ip_address                  = string
-     netmask                     = string
-     }))
-#   })
- }
+    cluster_internal_subnet       = optional(object({
+       gateway                     = string
+       ip_address                  = string
+       netmask                     = string
+    }))
+  })
+}
 #
 # variable "local_cred_policy" {
 #   # type = object({

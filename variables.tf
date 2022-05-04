@@ -55,39 +55,39 @@ variable "hypervisor_admin_pwd" {
 #   default     = "default"
 # }
 #
-# variable "cluster" {
-#   # type = object({
-#   #   name                          = string
-#   #   description                   = string
-#   #   data_ip_address               = string
-#   #   hypervisor_control_ip_address = string
-#   #   hypervisor_type               = string ## ESXi, IWE, HyperV
-#   #   mac_address_prefix            = string
-#   #   mgmt_ip_address               = string
-#   #   mgmt_platform                 = string ## EDGE, FI
-#   #   replication                   = number
-#   #   host_name_prefix              = string
-#   #   storage_data_vlan             = object({
-#   #     name    = string
-#   #     vlan_id = number
-#   #     })
-#   #   storage_cluster_auxiliary_ip  = optional(string)
-#   #   storage_type                  = optional(string)
-#   #   wwxn_prefix                   = optional(string)
-#   #   ## IWE ONLY ##
-#   #   storage_client_vlan = object({
-#   #     name       = string
-#   #     vlan_id    = number
-#   #     ip_address = string
-#   #     netmask    = string
-#   #     })
-#   #   cluster_internal_subnet       = optional(object({
-#   #     gateway                     = string
-#   #     ip_address                  = string
-#   #     netmask                     = string
-#   #     }))
-#   #   })
-# }
+variable "cluster" {
+  type = object({
+     name                          = string
+     description                   = string
+     data_ip_address               = string
+     hypervisor_control_ip_address = string
+     hypervisor_type               = string ## ESXi, IWE, HyperV
+     mac_address_prefix            = string
+     mgmt_ip_address               = string
+     mgmt_platform                 = string ## EDGE, FI
+     replication                   = number
+     host_name_prefix              = string
+     storage_data_vlan             = object({
+       name    = string
+       vlan_id = number
+       })
+  storage_cluster_auxiliary_ip  = optional(string)
+  storage_type                  = optional(string)
+  wwxn_prefix                   = optional(string)
+  ## IWE ONLY ##
+  storage_client_vlan = object({
+    name       = string
+    vlan_id    = number
+    ip_address = string
+    netmask    = string
+    })
+  cluster_internal_subnet       = optional(object({
+     gateway                     = string
+     ip_address                  = string
+     netmask                     = string
+     }))
+#   })
+ }
 #
 # variable "local_cred_policy" {
 #   # type = object({

@@ -100,17 +100,17 @@ variable "cluster" {
 #   # })
 # }
 #
-# variable "sys_config_policy" {
-#   # type = object({
-#   #   use_existing    = bool
-#   #   name            = string
-#   #   description     = string
-#   #   dns_domain_name = string
-#   #   dns_servers     = list(string)
-#   #   ntp_servers     = list(string)
-#   #   timezone        = string
-#   # })
-# }
+variable "sys_config_policy" {
+  type = object({
+     use_existing    = bool
+     name            = string
+     description     = string
+     dns_domain_name = string
+     dns_servers     = list(string)
+     ntp_servers     = list(string)
+     timezone        = string
+   })
+}
 #
 # variable "vcenter_config_policy" {}
 #

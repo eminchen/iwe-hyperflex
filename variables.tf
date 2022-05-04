@@ -39,21 +39,21 @@ variable "action" {
   }
 }
 #
-# variable "wait_for_completion" {
-#   type = bool
-#   default = false
-# }
+variable "wait_for_completion" {
+  type = bool
+  default = false
+}
 #
-# variable "tags" {
-#   type    = list(map(string))
-#   default = []
-# }
+variable "tags" {
+  type    = list(map(string))
+  default = []
+}
 #
-# variable "organization" {
-#   type        = string
-#   description = "Organization Name"
-#   default     = "default"
-# }
+variable "organization" {
+  type        = string
+  description = "Organization Name"
+  default     = "default"
+}
 #
 variable "cluster" {
   type = object({

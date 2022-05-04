@@ -71,9 +71,9 @@ variable "cluster" {
        name    = string
        vlan_id = number
      })
-    storage_cluster_auxiliary_ip  = optional(string)
-    storage_type                  = optional(string)
-    wwxn_prefix                   = optional(string)
+#    storage_cluster_auxiliary_ip  = optional(string)
+#    storage_type                  = optional(string)
+#    wwxn_prefix                   = optional(string)
     ## IWE ONLY ##
     storage_client_vlan = object({
       name       = string

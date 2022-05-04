@@ -95,7 +95,7 @@ module "hx" {
   tags                = var.tags
 
   cluster                         = var.cluster
-#  nodes                           = var.nodes
+  nodes                           = {}#var.nodes
   local_cred_policy               = var.local_cred_policy
   sys_config_policy               = var.sys_config_policy
   # vcenter_config_policy           = var.vcenter_config_policy

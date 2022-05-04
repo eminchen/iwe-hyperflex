@@ -42,7 +42,7 @@ cluster = {
   }
 
 ### ASSIGNED NODES (SERVERS) ###
-nodes = {
+#nodes = {
 #  WZP23470VYT = {
 #    cluster_index           = 1
     ## NOTE: Intersight will dynamically allocate IPs from pools defined in node config policy if not set explicitly ##
@@ -61,7 +61,7 @@ nodes = {
 #  WZP23470VYE = {
 #    cluster_index = 3
 #  }
-}
+#}
 
 ### ASSOCIATED POLICIES ###
 

@@ -89,16 +89,16 @@ variable "cluster" {
   })
 }
 #
-# variable "local_cred_policy" {
-#   # type = object({
-#   #   use_existing                = bool
-#   #   name                        = string
-#   #   factory_hypervisor_password = bool
-#   #   hxdp_root_pwd               = string
-#   #   hypervisor_admin            = string # admin
-#   #   hypervisor_admin_pwd        = string
-#   # })
-# }
+variable "local_cred_policy" {
+  type = object({
+    use_existing                = bool
+    name                        = string
+    factory_hypervisor_password = bool
+    hxdp_root_pwd               = string
+    hypervisor_admin            = string # admin
+    hypervisor_admin_pwd        = string
+  })
+}
 #
 variable "sys_config_policy" {
   type = object({
@@ -139,38 +139,38 @@ variable "auto_support_policy" {
   })
 }
 #
-# variable "node_config_policy" {
-#   # type = object({
-#   #   use_existing = bool
-#   #   name         = string
-#   #   description = string
-#   #   node_name_prefix = string
-#   #   data_ip_range = object({
-#   #     end_addr    = string
-#   #     gateway     = string
-#   #     netmask     = string
-#   #     start_addr  = string
-#   #     })
-#   #   hxdp_ip_range = object({
-#   #     end_addr    = string
-#   #     gateway     = string
-#   #     netmask     = string
-#   #     start_addr  = string
-#   #     })
-#   #   hypervisor_control_ip_range = object({
-#   #     end_addr    = string
-#   #     gateway     = string
-#   #     netmask     = string
-#   #     start_addr  = string
-#   #     })
-#   #   mgmt_ip_range = object({
-#   #     end_addr    = string
-#   #     gateway     = string
-#   #     netmask     = string
-#   #     start_addr  = string
-#   #     })
-#   # })
-# }
+variable "node_config_policy" {
+ type = object({
+   use_existing = bool
+   name         = string
+   description = string
+   node_name_prefix = string
+   data_ip_range = object({
+     end_addr    = string
+     gateway     = string
+     netmask     = string
+     start_addr  = string
+     })
+   hxdp_ip_range = object({
+     end_addr    = string
+     gateway     = string
+     netmask     = string
+     start_addr  = string
+     })
+   hypervisor_control_ip_range = object({
+     end_addr    = string
+     gateway     = string
+     netmask     = string
+     start_addr  = string
+     })
+   mgmt_ip_range = object({
+     end_addr    = string
+     gateway     = string
+     netmask     = string
+     start_addr  = string
+     })
+ })
+}
 #
 variable "cluster_network_policy" {
   type = object({
